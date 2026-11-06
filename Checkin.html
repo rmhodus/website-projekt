@@ -1,0 +1,50 @@
+<section class="bookingcheck">
+  <h2>Zimmerverfügbarkeit prüfen</h2>
+
+  <form class="booking">
+    <!-- Datum -->
+    <div class="date1">
+      <label for="checkin">Anreisetag:</label>
+      <input type="date" id="checkin" required>
+    </div>
+
+    <div class="group1">
+      <label for="checkout">Abreisetag:</label>
+      <input type="date" id="checkout" required>
+    </div>
+
+    <!-- Personenanzahl -->
+    <div class="date1">
+      <label for="guests">Gäste:</label>
+      <select id="guests" required>
+        <option value="1">1 Person</option>
+        <option value="2" selected>2 Personen</option>
+        <option value="3">3 Personen</option>
+        <option value="4">4 Personen</option>
+      </select>
+    </div>
+
+    <!-- Zimmerart -->
+    <div class="form-group">
+      <label for="guests">Zimmerwahl:</label>
+      <select id="guests" required>
+        <option value="1">Standart</option>
+        <option value="2" selected>Lounge</option>
+        <option value="3">**</option>
+        <option value="4">**</option>
+      </select>
+    </div>
+
+    <!-- Checkbox statt richtigem Button -->
+    <input type="checkbox" id="check-toggle" class="state-toggle">
+
+    <label for="check-toggle" class="btn-check">Verfügbarkeit prüfen</label>
+
+    <!-- Ergebnis-->
+    <div class="result-box">
+      <p class="status-success">✓ Zimmer verfügbar!</p>
+      <p class="details">Für den gewählten Zeitraum haben wir noch freie Zimmer.</p>
+      <button type="button" class="btn-book">Jetzt reservieren</button>
+    </div>
+  </form>
+</section>1
