@@ -32,7 +32,6 @@ Nur HTML und CSS, keine Installation, kein JavaScript.
 
 ```
 Startseite
-├── Hotel
 ├── Zimmer
 │   └── Zimmer-Detail
 ├── Wellness
@@ -48,13 +47,14 @@ Startseite
 
 ## Technische Grundlagen und Entscheidungen
 
-| Thema | Entscheidung | Grund |
+| Thema | Entscheidung | Erläuterung |
 |---|---|---|
 | Technik | Reines HTML und CSS, kein JavaScript | Vorgabe |
-| CSS | Eigenes CSS mit `@layer`, kein Framework | Kleine Dateien |
-| Farben | Nur als Variablen in `tokens.css` | Einheitlich, an einer Stelle änderbar |
-| Responsive | Mobile-first, breites Layout ab `64rem` | Lesbar von 320 bis 1920 px |
-| Menü | `popover` auf dem Handy | Ohne JavaScript, mit Tastatur bedienbar |
+| CSS | Eigenes CSS ohne Framework | in einer Datei css/stlye.css |
+| Farben | Nur als Variablen in :root | Einheitlich, an einer Stelle änderbar |
+| Responsive | Mobile-first, Breakpoints bei 48em (Tablet) und 64 em (Desktop) | Lesbar von 320 bis 1920 px |
+| Menü | Auf dem Handy per Checkbox und Label ein- und ausklappbar, ab 64em immer sichtbar | Ohne JavaScript |
+| Darkmode | Schalter per Checkbox und :checked, ohne Java Skript | Auswahl gilt nur auf der aktuellen Seite |
 | Formular | HTML-Validierung, sendet auf `danke.html` | Kein Backend |
 | Bilder | WebP mit `width` und `height` | Schnelles Laden |
 
@@ -62,11 +62,11 @@ Startseite
 ## Testhinweise
 
 - Über einen lokalen Server öffnen, nicht per Doppelklick.
-- Getestet in aktuellen Versionen von Chrome, Firefox und Safari.
+- Gepalnt: Test in aktuellen Versionen von Chrome, Firefox und Safari.
 - Breiten 320, 768, 1280, 1920 px (DevTools → Device Toolbar).
 - Langsames Netz: DevTools → Network → *Slow 4G*.
-- Alles ist mit der Tastatur bedienbar.
-- Geprüft mit [W3C Validator](https://validator.w3.org/) und [accessibilitychecker.org](https://www.accessibilitychecker.org/).
+- Alles soll mit der Tastatur bedienbar sein.
+- Geplant: Prüfung mit [W3C Validator](https://validator.w3.org/) und [accessibilitychecker.org](https://www.accessibilitychecker.org/).
 
 
 ## Zusammenarbeit
@@ -84,5 +84,5 @@ Commit-Nachrichten und Titel von Pull Requests folgen [Conventional Commits](htt
 
 | Inhalt | Quelle | Lizenz |
 |---|---|---|
-| Fotos | Unsplash | Unsplash License |
-| Schrift | Google Fonts, lokal gespeichert | SIL Open Font License |
+| Fotos | KI-generiert mit Google Gemini (eigene Promts nach unserem Konzept) | Nutzung gemäß Nutzungsbedingungen von Google Gemini |
+| Schrift | Georgia und Systemschrift des Geräts, keine Webfonts | Systemschrift, mit dem Betriebssystem mitgeliefert |
