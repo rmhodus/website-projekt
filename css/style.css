@@ -1,0 +1,2437 @@
+/* ==========================================================================
+   FELLNESS – Alpenhotel für Digital Detox, Silent Luxury & Wellness
+   Designsystem „Chalet“: Holz, Naturstein, Moos und Kupfer, Rundbögen als Leitmotiv
+   Reines CSS, kein JavaScript · Webseiten-Projekt 2026, DHBW Heidenheim (fiktives Hotel)
+
+   Inhalt
+   1.  Design-Variablen (hell + Dark Mode)
+   2.  Reset und Basis
+   3.  Typografie und kleine Textbausteine
+   4.  Layout-Hilfen (Container, Sektionen, Abschnittsköpfe)
+   5.  Header und Navigation (Logo zentriert)
+   6.  Buttons und Textlinks
+   7.  Rundbogen-Bilder (Leitmotiv)
+   8.  Seiteneinstiege: geteiltes Titelbild und kompakter Einstieg
+   9.  Startseite: Schritte, Konzept, Preiskarte, Bildbühne, Kennzahlen, Zitat
+   10. Karten, Raster, Listen
+   11. Suiten-Zeilen (Daten & Matrix, Teil 1)
+   12. Kapitel im Zickzack (Philosophie)
+   13. Bento-Raster (Wellness, Umgebung)
+   14. Programm-Auswahl und Filter ohne JavaScript
+   15. Editorial-Bänder (Hotel)
+   16. Tabellen, Kennzahlen, SWOT (Daten & Matrix, Teil 2)
+   17. Bewertungen als Pinnwand (Rezensionen)
+   18. FAQ, Hinweise
+   19. Formular
+   20. Textseite (Impressum)
+   21. Abschluss-Band und Footer
+   22. Responsive Anpassungen (Mobile First)
+   23. Animationen (nur ohne „Bewegung reduzieren“)
+   24. Barrierefreiheit und Druck
+   ========================================================================== */
+
+
+/* 1. DESIGN-VARIABLEN ------------------------------------------------------
+   Alle Farben stehen nur hier. Der Dark Mode überschreibt nur diese Variablen.
+   Kontraste (WCAG-Formel berechnet) stehen in der README. */
+:root {
+  /* Grundpalette */
+  --moss: #2f3d33;         /* Moosgrün: Überschriften, Buttons, dunkle Flächen */
+  --moss-deep: #263229;    /* dunkleres Moos für den Footer */
+  --cream: #f7f3ec;        /* Seitenhintergrund */
+  --sand: #ece4d8;         /* getönte Abschnitte */
+  --walnut: #2b2622;       /* Fließtext */
+  --copper: #a8784f;       /* nur Deko: Linien, Rahmen, Muster (3,5 : 1) */
+  --paper: #fffdf9;        /* Karten */
+
+  /* Rollen-Variablen: Diese nutzen die Komponenten */
+  --color-bg: var(--cream);
+  --color-surface: var(--paper);
+  --color-tint: var(--sand);
+  --color-text: var(--walnut);
+  --color-heading: var(--moss);
+  --color-muted: #5c544c;
+  --color-accent: var(--copper);
+  --color-accent-text: #7c5530;          /* Kupfer für kleine Texte, mind. 5,2 : 1 */
+  --color-dark: var(--moss);
+  --color-footer: var(--moss-deep);
+  --color-on-dark: var(--cream);
+  --color-accent-on-dark: #e2c9a6;
+  --color-border: #e0d6c8;
+  --color-focus: var(--moss);
+  --color-focus-on-dark: #e2c9a6;
+  --color-error: #a12f2f;
+  --color-btn-bg: var(--moss);
+  --color-btn-text: var(--cream);
+  --color-btn-hover: #7c5530;
+  --color-table-head: var(--moss);
+  --color-table-head-text: var(--cream);
+  --color-stripe: #f3ede3;
+  --color-input-bg: var(--paper);
+
+  /* Schriften: nur Systemschriften, keine Webfonts */
+  --font-heading: Georgia, "Times New Roman", serif;
+  --font-body: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Abstände */
+  --space-xs: 0.5rem;
+  --space-s: 1rem;
+  --space-m: 2rem;
+  --space-l: 4rem;
+  --space-xl: clamp(4rem, 8vw, 7rem);
+
+  /* Formen */
+  --radius: 6px;
+  --radius-l: 14px;
+  --radius-pill: 999px;
+  --arch: 999px 999px var(--radius-l) var(--radius-l);   /* Rundbogen oben */
+  --shadow: 0 16px 40px rgba(43, 38, 34, 0.10);
+
+  /* Sonstiges */
+  --tap-size: 2.75rem;                   /* 44 px Mindest-Klickfläche */
+  --transition: 0.25s ease;
+}
+
+/* Dark Mode ohne JavaScript: Die Checkbox #darkmode-toggle steht vor dem .site-wrapper.
+   Ist sie angehakt, setzt der Geschwisterselektor (~) die Variablen neu.
+   Grenze: Die Wahl wird beim Seitenwechsel nicht gespeichert. */
+#darkmode-toggle:checked ~ .site-wrapper {
+  --color-bg: #1a1714;
+  --color-surface: #23201c;
+  --color-tint: #201d19;
+  --color-text: #ece4d8;
+  --color-heading: #f3ece2;
+  --color-muted: #b8ad9f;
+  --color-accent-text: #d9b88f;
+  --color-dark: #11100e;
+  --color-footer: #0d0c0b;
+  --color-on-dark: #f7f3ec;
+  --color-accent-on-dark: #d9b88f;
+  --color-border: #3a342d;
+  --color-focus: #d9b88f;
+  --color-focus-on-dark: #d9b88f;
+  --color-error: #f0a3a3;
+  --color-btn-bg: #d9b88f;
+  --color-btn-text: #1a1714;
+  --color-btn-hover: #f3ece2;
+  --color-table-head: #11100e;
+  --color-table-head-text: #f3ece2;
+  --color-stripe: #201d19;
+  --color-input-bg: #1a1714;
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+
+/* 2. RESET UND BASIS -------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 8rem; /* Sprungziele verschwinden nicht unter dem klebenden Header */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 0.3vw + 0.95rem, 1.125rem);
+  line-height: 1.7;
+  color: var(--walnut);
+  background: var(--cream);
+}
+
+.site-wrapper {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-bg);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  margin-top: var(--space-xs);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+a {
+  color: var(--color-heading);
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--color-accent-text);
+}
+
+address {
+  font-style: normal;
+}
+
+/* Sichtbarer Tastaturfokus für alle bedienbaren Elemente */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* Auf dunklen Flächen wäre ein grüner Rahmen unsichtbar, daher Hellkupfer */
+.section--dark :focus-visible,
+.hero-split__text :focus-visible,
+.site-footer :focus-visible,
+.bento__item--dark :focus-visible {
+  outline-color: var(--color-focus-on-dark);
+}
+
+/* Nur für Screenreader sichtbar */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip-Link: erscheint erst beim Tabben */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 300;
+  padding: 0.75rem 1.25rem;
+  color: var(--cream);
+  background: var(--moss);
+  border-radius: var(--radius);
+}
+
+.skip-link:focus {
+  top: 1rem;
+  color: var(--cream);
+}
+
+
+/* 3. TYPOGRAFIE UND KLEINE TEXTBAUSTEINE ------------------------------------ */
+h1,
+h2,
+h3 {
+  margin: 0 0 var(--space-s);
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--color-heading);
+  overflow-wrap: break-word; /* lange Wörter brechen auf 320 px um statt überzustehen */
+  hyphens: auto;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5vw + 1rem, 4.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 2.5vw + 1rem, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 0.8vw + 1rem, 1.55rem);
+  line-height: 1.3;
+}
+
+p {
+  max-width: 68ch; /* begrenzte Zeilenlänge = bessere Lesbarkeit */
+  margin: 0 0 var(--space-s);
+}
+
+/* Vorzeile: kleine Kupfer-Versalien mit kurzer Linie davor */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--space-xs);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent-text);
+}
+
+.eyebrow::before {
+  content: "";
+  flex: none;
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.text-center .eyebrow {
+  justify-content: center;
+}
+
+/* Kleine Versalienzeile in Karten */
+.kicker {
+  margin-bottom: 0.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.lead {
+  font-size: clamp(1.1rem, 0.6vw + 1rem, 1.35rem);
+  color: var(--color-muted);
+}
+
+/* Großer, kursiver Aussagesatz */
+.statement {
+  font-size: clamp(1.7rem, 2.4vw + 1rem, 2.8rem);
+  font-style: italic;
+  line-height: 1.25;
+}
+
+.note,
+.hint {
+  font-size: 0.88rem;
+  color: var(--color-muted);
+}
+
+.price {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: var(--color-heading);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-center p {
+  margin-inline: auto;
+}
+
+
+/* 4. LAYOUT-HILFEN ---------------------------------------------------------- */
+.container {
+  width: min(100% - 2.5rem, 75rem);
+  margin-inline: auto;
+}
+
+.container--narrow {
+  width: min(100% - 2.5rem, 48rem);
+}
+
+.section {
+  padding-block: var(--space-xl);
+}
+
+/* Getönter Abschnitt (Sandstein) */
+.section--surface {
+  background: var(--color-tint);
+}
+
+/* „Höhenlinien“ wie auf einer Wanderkarte: konzentrische Ringe, sehr zart */
+.section--pattern {
+  background-image:
+    repeating-radial-gradient(circle at 90% 10%, transparent 0 34px, rgba(168, 120, 79, 0.14) 34px 35px),
+    repeating-radial-gradient(circle at 5% 100%, transparent 0 46px, rgba(168, 120, 79, 0.10) 46px 47px);
+}
+
+.section--dark {
+  color: var(--color-on-dark);
+  background: var(--color-dark);
+}
+
+.section--dark h2,
+.section--dark h3,
+.section--dark a,
+.section--dark .lead {
+  color: var(--color-on-dark);
+}
+
+.section--dark .eyebrow {
+  color: var(--color-accent-on-dark);
+}
+
+.section-head {
+  margin-bottom: var(--space-l);
+}
+
+/* Abschnittskopf: Überschrift links, Einleitung rechts */
+.split-head {
+  display: grid;
+  gap: var(--space-s) var(--space-l);
+  align-items: end;
+  margin-bottom: var(--space-l);
+}
+
+.split-head h2,
+.split-head > p {
+  margin-bottom: 0;
+}
+
+.split-head > p {
+  color: var(--color-muted);
+}
+
+
+/* 5. HEADER UND NAVIGATION -------------------------------------------------- */
+/* Mobil: [Dark Mode] [Logo] [Menü]. Ab 1024 px: Logo oben zentriert, Navigation darunter. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: var(--tap-size) 1fr var(--tap-size);
+  grid-template-areas:
+    "dark brand burger"
+    "nav  nav   nav";
+  align-items: center;
+  gap: 0 var(--space-s);
+  padding-block: 0.6rem;
+}
+
+.brand {
+  grid-area: brand;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-heading);
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  letter-spacing: 0.32em;
+  margin-right: -0.32em; /* gleicht die Sperrung des letzten Buchstabens aus */
+}
+
+.brand-place {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Dark-Mode-Schalter und Menü-Knopf: runde bzw. pillenförmige Labels */
+.darkmode-label,
+.nav-burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--tap-size);
+  min-height: var(--tap-size);
+  font-size: 0.85rem;
+  color: var(--color-heading);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.darkmode-label {
+  grid-area: dark;
+  justify-self: start; /* nicht auf Spaltenbreite strecken */
+}
+
+.nav-burger {
+  grid-area: burger;
+  padding-inline: 0.9rem;
+  justify-self: end;
+}
+
+.darkmode-label:hover,
+.nav-burger:hover {
+  border-color: var(--color-accent);
+}
+
+/* Halb gefüllter Kreis als Symbol */
+.darkmode-label::before {
+  content: "";
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid var(--color-heading);
+  border-radius: 50%;
+  background: linear-gradient(90deg, var(--color-heading) 50%, transparent 50%);
+}
+
+#darkmode-toggle:checked ~ .site-wrapper .darkmode-label::before {
+  background: linear-gradient(90deg, transparent 50%, var(--color-heading) 50%);
+}
+
+/* Unsichtbare Checkboxen: das Label bekommt den Fokusrahmen */
+#darkmode-toggle:focus-visible ~ .site-wrapper .darkmode-label,
+.nav-toggle:focus-visible + .nav-burger {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* Mobiles Menü: Ist #nav-toggle angehakt, wird die Navigation sichtbar */
+.site-nav {
+  grid-area: nav;
+  display: none;
+  padding-block: var(--space-s);
+}
+
+.nav-toggle:checked ~ .site-nav {
+  display: block;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a:not(.btn) {
+  display: block;
+  min-height: var(--tap-size);
+  padding: 0.65rem 0;
+  text-decoration: none;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-nav a:not(.btn):hover {
+  color: var(--color-accent-text);
+}
+
+/* Aktuelle Seite: Kupferlinie + fett (nicht nur Farbe) */
+.site-nav a[aria-current="page"]:not(.btn) {
+  font-weight: 600;
+  border-bottom-color: var(--color-accent);
+}
+
+.site-nav .btn {
+  margin-top: var(--space-xs);
+}
+
+
+/* 6. BUTTONS UND TEXTLINKS -------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap-size);
+  padding: 0.7rem 1.6rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-btn-text);
+  background: var(--color-btn-bg);
+  border: 1px solid var(--color-btn-bg);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.btn:hover {
+  color: var(--color-btn-text);
+  background: var(--color-btn-hover);
+  border-color: var(--color-btn-hover);
+}
+
+.btn--outline {
+  color: var(--color-btn-bg);
+  background: transparent;
+}
+
+.btn--outline:hover {
+  color: var(--color-btn-text);
+}
+
+/* Auf dunklem Grund: hell gefüllt bzw. heller Rahmen */
+.btn--light,
+.section--dark .btn {
+  color: var(--moss);
+  background: var(--cream);
+  border-color: var(--cream);
+}
+
+.btn--light:hover,
+.section--dark .btn:hover {
+  color: var(--moss);
+  background: var(--color-accent-on-dark);
+  border-color: var(--color-accent-on-dark);
+}
+
+.btn--ghost,
+.section--dark .btn--outline {
+  color: var(--cream);
+  background: transparent;
+  border-color: rgba(247, 243, 236, 0.6);
+}
+
+.btn--ghost:hover,
+.section--dark .btn--outline:hover {
+  color: var(--moss);
+  background: var(--cream);
+}
+
+.site-nav .btn[aria-current="page"] {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: var(--space-s);
+}
+
+.text-center .btn-row {
+  justify-content: center;
+}
+
+/* Textlink mit Unterstrich und Pfeil als ruhige Alternative zum Button */
+.link-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-block: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--color-heading);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.link-more::after {
+  content: "→";
+  transition: transform var(--transition);
+}
+
+.link-more:hover {
+  color: var(--color-accent-text);
+}
+
+
+/* 7. RUNDBOGEN-BILDER (LEITMOTIV) ------------------------------------------- */
+/* Bilder mit Rundbogen oben erinnern an Alpen-Fenster und Bergprofile.
+   Die Form entsteht nur über border-radius, das Bild selbst bleibt rechteckig. */
+.arch {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--arch);
+  background: var(--color-border); /* Fläche, solange das Bild lädt */
+}
+
+/* Fläche statt Foto (Wald-Suite): gleiche Form, Kennzahl in Serifenschrift */
+.arch--visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-on-dark);
+  background: var(--color-dark);
+}
+
+.arch__figure {
+  font-family: var(--font-heading);
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-accent-on-dark);
+}
+
+/* Normale Bilder: weiche Ecken */
+.media {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-l);
+  background: var(--color-border);
+}
+
+
+/* 8. SEITENEINSTIEGE -------------------------------------------------------- */
+/* Startseite: geteiltes Titelbild. Mobil Text über Bild, ab 1024 px nebeneinander. */
+.hero-split {
+  display: grid;
+  background: var(--color-bg);
+}
+
+.hero-split__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-l) max(1.25rem, (100vw - 75rem) / 2);
+  color: var(--color-on-dark);
+  background: var(--color-dark);
+}
+
+.hero-split__text h1 {
+  max-width: 12ch;
+  color: var(--color-on-dark);
+}
+
+.hero-split__text .eyebrow {
+  color: var(--color-accent-on-dark);
+}
+
+.hero-split__text .lead {
+  color: var(--color-on-dark);
+}
+
+/* Drei Kennzahlen unter dem Text */
+.hero-split__facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-s);
+  max-width: 30rem;
+  margin: var(--space-m) 0 0;
+  padding-top: var(--space-s);
+  border-top: 1px solid rgba(247, 243, 236, 0.25);
+}
+
+.hero-split__facts div {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-split__facts dt {
+  font-size: 0.8rem;
+  color: var(--color-accent-on-dark);
+}
+
+.hero-split__facts dd {
+  order: -1; /* Zahl optisch über der Beschriftung, im HTML danach */
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2vw + 0.8rem, 2rem);
+}
+
+.hero-split__media {
+  padding: var(--space-m) 1.25rem;
+}
+
+.arch--hero {
+  aspect-ratio: 4 / 5;
+  object-position: 68% center; /* Gebäude und Pool bleiben im Bild */
+}
+
+/* Unterseiten: kompakter Einstieg auf Sandstein mit Bogen-Abschluss unten */
+.hero {
+  padding-block: var(--space-l);
+  background: var(--color-tint);
+  border-radius: 0 0 50% 50% / 0 0 2.5rem 2.5rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.1rem, 4vw + 1rem, 3.6rem);
+}
+
+.hero-grid {
+  display: grid;
+  gap: var(--space-m);
+  align-items: center;
+}
+
+
+/* 9. STARTSEITE -------------------------------------------------------------- */
+/* Drei Schritte: Nummer im Kreis aus einem CSS-Zähler */
+.steps {
+  display: grid;
+  gap: var(--space-m);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: schritt;
+}
+
+.step {
+  position: relative;
+  padding: var(--space-m);
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l);
+  counter-increment: schritt;
+}
+
+.step::before {
+  content: counter(schritt);
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin: 0 auto var(--space-s);
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--color-accent-text);
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+}
+
+.step p {
+  margin-inline: auto;
+  margin-bottom: 0;
+}
+
+/* Konzept: Text und drei versetzte Bilder */
+.concept {
+  display: grid;
+  gap: var(--space-l);
+  align-items: center;
+}
+
+.photo-trio {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--space-s);
+}
+
+.photo-trio img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-l);
+}
+
+.photo-trio__a {
+  grid-row: 1 / 3;
+  height: 100%;
+  border-radius: var(--arch);
+}
+
+.photo-trio__b,
+.photo-trio__c {
+  aspect-ratio: 1 / 1;
+}
+
+/* Preiskarte: Suitenname – gepunktete Linie – Preis */
+.rate-card {
+  display: grid;
+  gap: var(--space-l);
+  align-items: center;
+}
+
+.rate-list {
+  margin: var(--space-m) 0 var(--space-s);
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.rate-list__row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  min-height: var(--tap-size);
+  padding-block: 1rem;
+  text-decoration: none;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Die gepunktete Linie ist ein Pseudoelement, das per order zwischen Name und Preis rückt */
+.rate-list__row::before {
+  content: "";
+  order: 2;
+  flex: 1;
+  min-width: 1rem;
+  border-bottom: 2px dotted var(--color-accent);
+}
+
+.rate-list__name {
+  order: 1;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-heading);
+}
+
+.rate-list__meta {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.rate-list__price {
+  order: 3;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  white-space: nowrap;
+  color: var(--color-accent-text);
+}
+
+.rate-list__row:hover .rate-list__name {
+  color: var(--color-accent-text);
+}
+
+.rate-card__media {
+  max-width: 26rem;
+  justify-self: center;
+}
+
+/* Bildbühne: großes Bild, Textkarte überlappt es */
+.stage {
+  display: grid;
+}
+
+.stage__img {
+  width: 100%;
+  height: clamp(18rem, 55vw, 40rem);
+  object-fit: cover;
+}
+
+.stage__card {
+  position: relative;
+  max-width: 34rem;
+  margin-top: -4rem;
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow);
+}
+
+.stage__card > :last-child {
+  margin-bottom: 0;
+}
+
+/* Kennzahlen der Umgebung */
+.landmarks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: var(--space-m);
+  margin: 0 0 var(--space-m);
+  padding: 0;
+  list-style: none;
+}
+
+.landmark {
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border-radius: var(--radius-l);
+}
+
+.landmark__value {
+  margin-bottom: var(--space-xs);
+  padding-bottom: var(--space-xs);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw + 1rem, 2.8rem);
+  line-height: 1.1;
+  color: var(--color-accent-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.landmark > :last-child {
+  margin-bottom: 0;
+}
+
+/* Gästestimme */
+.testimonial {
+  text-align: center;
+}
+
+.testimonial .eyebrow {
+  justify-content: center;
+}
+
+.testimonial p {
+  margin-inline: auto;
+}
+
+.testimonial__author {
+  font-weight: 600;
+}
+
+
+/* 10. KARTEN, RASTER, LISTEN ------------------------------------------------ */
+/* auto-fit + minmax: Spaltenzahl passt sich automatisch an die Breite an */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: var(--space-m);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card-grid--2 {
+  grid-template-columns: 1fr;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l);
+}
+
+.card > :last-child {
+  margin-bottom: 0;
+}
+
+/* Liste mit Häkchen aus CSS-Rahmen (kein Icon-Font) */
+.check-list {
+  margin: 0 0 var(--space-s);
+  padding: 0;
+  list-style: none;
+}
+
+.check-list li {
+  position: relative;
+  margin-bottom: 0.4rem;
+  padding-left: 1.6rem;
+}
+
+.check-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 0.35em;
+  width: 0.45rem;
+  height: 0.85rem;
+  border: solid var(--color-accent-text);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+
+/* 11. SUITEN-ZEILEN ----------------------------------------------------------- */
+/* Jede Suite als große Zeile: Bogenbild + Text. Ab Tablet wechselt die Seite. */
+.suite-rows {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.suite-row {
+  display: grid;
+  gap: var(--space-m);
+  align-items: center;
+}
+
+.suite-row .arch {
+  aspect-ratio: 1 / 1;
+}
+
+.suite-row__media {
+  max-width: 30rem;
+}
+
+.suite-row__body > :last-child {
+  margin-bottom: 0;
+}
+
+
+/* 11b. SUITEN-KARTEN UND KATEGORIE-FILTER (Highlight 1, nur CSS) ------------- */
+/* Prinzip: Radio-Buttons (#f-alle, #f-wald, #f-panorama) liegen VOR dem Kartenraster
+   im selben Container .suite-filter. :has() prüft, welcher Radio-Button gewählt ist,
+   und blendet alle Karten mit anderer data-kategorie aus.
+   Grenze: Ältere Browser ohne :has() zeigen einfach alle Suiten (nichts geht verloren). */
+.suite-filter .programs {
+  margin-bottom: var(--space-m);
+}
+
+.suite-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-m);
+  margin: 0;
+  padding: 0;
+}
+
+.suite-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l);
+}
+
+.suite-card__media {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--color-tint);
+}
+
+.suite-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.suite-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: var(--space-m);
+}
+
+.suite-card__body > :last-child {
+  margin-bottom: 0;
+}
+
+/* Preis und Button rutschen an den Kartenboden: alle Karten wirken gleich hoch */
+.suite-card .price {
+  margin-top: auto;
+}
+
+.suite-filter:has(#f-wald:checked) .suite-card:not([data-kategorie="wald"]),
+.suite-filter:has(#f-panorama:checked) .suite-card:not([data-kategorie="panorama"]) {
+  display: none;
+}
+
+
+/* 12. KAPITEL IM ZICKZACK (Philosophie) ------------------------------------- */
+/* Große, kursive Kapitelnummer aus einem CSS-Zähler, wechselnde Seiten ab Tablet */
+.chapters {
+  display: grid;
+  gap: var(--space-l);
+  counter-reset: kapitel;
+}
+
+.chapter {
+  display: grid;
+  gap: var(--space-s);
+  padding-top: var(--space-m);
+  border-top: 1px solid var(--color-border);
+  counter-increment: kapitel;
+}
+
+.chapter::before {
+  content: counter(kapitel, decimal-leading-zero);
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-style: italic;
+  line-height: 1;
+  color: var(--color-accent-text);
+}
+
+
+/* 13. BENTO-RASTER (Wellness, Umgebung) ------------------------------------- */
+/* Mobil eine Spalte, Tablet zwei, Desktop 12 Spalten mit wechselnden Spannweiten.
+   Kacheln wechseln zwischen Papier, Sandstein und Moos. */
+.bento {
+  display: grid;
+  gap: var(--space-s);
+}
+
+.bento__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border-radius: var(--radius-l);
+}
+
+.bento__item > :last-child {
+  margin-bottom: 0;
+}
+
+.bento__item .media {
+  margin-bottom: var(--space-xs);
+}
+
+.bento__item--accent {
+  background: var(--color-tint);
+  border: 1px solid var(--color-accent);
+}
+
+.bento__item--dark {
+  color: var(--color-on-dark);
+  background: var(--color-dark);
+}
+
+.bento__item--dark h2,
+.bento__item--dark h3,
+.bento__item--dark a {
+  color: var(--color-on-dark);
+}
+
+/* Öffnungszeiten als Definitionsliste */
+.schedule {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.35rem 1.25rem;
+  margin: 0 0 var(--space-s);
+}
+
+.schedule dt {
+  font-weight: 600;
+  color: var(--color-heading);
+  font-variant-numeric: tabular-nums;
+}
+
+.schedule dd {
+  margin: 0;
+}
+
+
+/* 14. PROGRAMM-AUSWAHL UND FILTER OHNE JAVASCRIPT --------------------------- */
+/* Prinzip: unsichtbare Radio-Buttons + sichtbare Labels (Pillen).
+   „#p-detox:checked ~ #panel-detox“ zeigt das passende Panel.
+   Bedienung: Tab springt in die Gruppe, Pfeiltasten wechseln. */
+.programs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.programs__label {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-size);
+  padding: 0.5rem 1.25rem;
+  font-size: 0.95rem;
+  color: var(--color-heading);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.programs__label:hover {
+  border-color: var(--color-accent);
+}
+
+/* Gewählt: Farbe UND Unterstreichung (nicht nur Farbe) */
+.programs__input:checked + .programs__label {
+  color: var(--color-btn-text);
+  background: var(--color-btn-bg);
+  border-color: var(--color-btn-bg);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.programs__input:focus-visible + .programs__label {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.programs__panel {
+  display: none;
+  flex-basis: 100%;
+  margin-top: var(--space-s);
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border-radius: var(--radius-l);
+}
+
+.programs__panel > :last-child {
+  margin-bottom: 0;
+}
+
+#p-detox:checked ~ #panel-detox,
+#p-silent:checked ~ #panel-silent,
+#p-wellness:checked ~ #panel-wellness {
+  display: block;
+}
+
+
+/* 15. EDITORIAL-BÄNDER (Hotel) ---------------------------------------------- */
+/* Mobil: Bild über Text. Ab 1024 px: Bild über 8 von 12 Spalten, Textkarte überlappt. */
+.band {
+  display: grid;
+  gap: var(--space-m);
+  align-items: center;
+}
+
+.band__media .media {
+  border-radius: 12rem 12rem var(--radius-l) var(--radius-l); /* flacher Bogen für Querformate */
+}
+
+.band__text {
+  position: relative;
+  z-index: 1;
+}
+
+.band__text > :last-child {
+  margin-bottom: 0;
+}
+
+
+/* 16. TABELLEN, KENNZAHLEN, SWOT -------------------------------------------- */
+/* Scroll-Container: Auf schmalen Bildschirmen scrollt nur die Tabelle.
+   tabindex="0" im HTML macht ihn per Tastatur scrollbar. */
+.table-scroll {
+  overflow-x: auto;
+  margin-bottom: var(--space-s);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l);
+}
+
+.data-table {
+  width: 100%;
+  min-width: 40rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.data-table--small {
+  min-width: 22rem;
+}
+
+.data-table caption {
+  padding: var(--space-s);
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  text-align: left;
+  color: var(--color-heading);
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--color-border);
+}
+
+.data-table thead th {
+  font-weight: 400;
+  color: var(--color-table-head-text);
+  background: var(--color-table-head);
+}
+
+.data-table tbody th {
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.data-table tbody tr:nth-child(even) {
+  background: var(--color-stripe);
+}
+
+.data-table tfoot th,
+.data-table tfoot td {
+  font-weight: 700;
+  border-top: 2px solid var(--color-heading);
+}
+
+/* Zahlen rechtsbündig mit gleich breiten Ziffern */
+.data-table .num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.table-pair {
+  display: grid;
+  gap: var(--space-m);
+}
+
+/* Kennzahlenleiste: Zahl optisch über der Beschriftung (order) */
+.kpi-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+  gap: var(--space-s);
+  margin: var(--space-m) 0 0;
+}
+
+.kpi-list div {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-s);
+  text-align: center;
+  background: var(--color-surface);
+  border-radius: var(--radius-l);
+}
+
+.kpi-list dt {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.kpi-list dd {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  color: var(--color-heading);
+}
+
+/* Inhaltsverzeichnis in zwei Spalten */
+.toc {
+  margin: var(--space-s) 0 0;
+  padding-left: 1.25rem;
+  columns: 2 14rem;
+}
+
+.toc li {
+  padding-block: 0.2rem;
+}
+
+.swot {
+  display: grid;
+  gap: var(--space-s);
+}
+
+
+/* 16b. SPLIT-SCREEN (Layout C: Business Case und Philosophie) ---------------- */
+/* Editorial-Aufbau: links eine dunkle Spalte mit Kennzahlen (bleibt beim Scrollen
+   stehen), rechts nummerierte Argumente. Mobil stehen beide Spalten untereinander. */
+.split-screen {
+  display: grid;
+  gap: var(--space-m);
+}
+
+/* Grid-Kinder dürfen schmaler werden als ihr längstes Wort (sonst Überlauf bei 320 px) */
+.split-screen > * {
+  min-width: 0;
+}
+
+.split-screen__aside {
+  padding: var(--space-m);
+  color: var(--color-on-dark);
+  background: var(--color-dark);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l);
+}
+
+.split-screen__aside h2,
+.split-screen__aside h3 {
+  color: var(--color-on-dark);
+  hyphens: manual;   /* „Detox“ soll nicht mitten im Wort getrennt werden */
+}
+
+.split-screen__aside .eyebrow {
+  color: var(--color-accent-on-dark);
+  overflow-wrap: anywhere;
+}
+
+/* Zitat in der Persona-Karte: kleiner als das große Statement auf der Startseite */
+.card .statement {
+  margin-top: auto;
+  font-size: 1.35rem;
+}
+
+.split-screen__aside > :last-child {
+  margin-bottom: 0;
+}
+
+/* Kennzahlen-Stapel: große Zahl über der Beschriftung (order, wie bei .kpi-list) */
+.stat-stack {
+  margin: var(--space-m) 0 0;
+}
+
+.stat-stack div {
+  display: flex;
+  flex-direction: column;
+  padding-block: var(--space-s);
+  border-top: 1px solid var(--color-accent-on-dark);
+}
+
+.stat-stack dd {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  line-height: 1.1;
+  color: var(--color-on-dark);
+}
+
+.stat-stack dt {
+  font-size: 0.95rem;
+  color: var(--color-on-dark);
+}
+
+/* Nummerierte Argumente: Nummer kommt aus einem CSS-Zähler, nicht aus dem HTML */
+.arguments {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: argument;
+}
+
+.argument {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 0 var(--space-s);
+  padding-block: var(--space-s);
+  border-top: 1px solid var(--color-border);
+  counter-increment: argument;
+}
+
+.argument::before {
+  content: counter(argument, decimal-leading-zero);
+  grid-row: 1 / span 2;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-accent-text);
+}
+
+.argument h3 {
+  margin-bottom: 0.25rem;
+  font-size: 1.35rem;
+}
+
+.argument p {
+  grid-column: 2;
+  margin-bottom: 0;
+}
+
+/* Balkenvergleich (Provision): reine CSS-Breite, die Zahl steht zusätzlich als Text */
+.share-bar {
+  margin: 0 0 var(--space-s);
+}
+
+.share-bar__label {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-s);
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.share-bar__track {
+  height: 0.9rem;
+  overflow: hidden;
+  background: var(--color-tint);
+  border: 1px solid var(--color-heading);
+  border-radius: var(--radius-pill);
+}
+
+.share-bar__fill {
+  display: block;
+  height: 100%;
+  background: var(--color-heading);
+}
+
+.share-bar__fill--25 { width: 25%; }
+.share-bar__fill--60 { width: 60%; }
+
+
+/* 17. BEWERTUNGEN ALS PINNWAND (Rezensionen) -------------------------------- */
+.score {
+  padding: var(--space-m);
+  text-align: center;
+  background: var(--color-surface);
+  border-radius: var(--radius-l);
+}
+
+.score p {
+  margin-inline: auto;
+}
+
+.score__label {
+  margin-bottom: var(--space-xs);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.score__value {
+  margin-bottom: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  line-height: 1;
+  color: var(--color-heading);
+}
+
+.score__value span {
+  font-size: 1.1rem;
+  color: var(--color-muted);
+}
+
+/* Sterne sind dekorativ (aria-hidden), der Wert steht als Text daneben */
+.rating {
+  margin-bottom: var(--space-xs);
+  letter-spacing: 0.15em;
+  color: var(--color-accent-text);
+}
+
+/* CSS-Spalten: Karten unterschiedlicher Höhe füllen die Spalten wie eine Pinnwand */
+.review-grid {
+  columns: 3 19rem;
+  column-gap: var(--space-m);
+  margin: var(--space-m) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.review {
+  break-inside: avoid; /* Karte nie auf zwei Spalten verteilen */
+  margin-bottom: var(--space-m);
+}
+
+.review article {
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border-radius: var(--radius-l);
+}
+
+.review h3 {
+  font-size: 1.25rem;
+}
+
+.review blockquote {
+  margin: 0 0 var(--space-s);
+}
+
+.review__meta {
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.review__author {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.review__author span {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.review__reply {
+  margin-top: var(--space-s);
+  padding: var(--space-s);
+  font-size: 0.9rem;
+  background: var(--color-tint);
+  border-radius: var(--radius);
+}
+
+.review__reply p {
+  margin: 0;
+}
+
+.review__reply .review__reply-title {
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+/* Filter: Ist eine Kategorie gewählt, werden alle anderen Karten ausgeblendet.
+   :has() prüft, ob im Container .reviews ein bestimmter Radio-Button ausgewählt ist. */
+.reviews:has(#f-paare:checked) .review:not([data-kategorie="paare"]),
+.reviews:has(#f-business:checked) .review:not([data-kategorie="business"]),
+.reviews:has(#f-familie:checked) .review:not([data-kategorie="familie"]),
+.reviews:has(#f-retreat:checked) .review:not([data-kategorie="retreat"]) {
+  display: none;
+}
+
+
+/* 18. FAQ UND HINWEISE ------------------------------------------------------ */
+.faq details {
+  margin-bottom: 0.75rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-l);
+}
+
+.faq summary {
+  position: relative;
+  min-height: var(--tap-size);
+  padding: 1rem 3.5rem 1rem 1.25rem;
+  font-weight: 600;
+  color: var(--color-heading);
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Plus im Kreis, dreht sich beim Öffnen zum Kreuz */
+.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  font-size: 1.2rem;
+  line-height: 1;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: transform var(--transition);
+}
+
+.faq details[open] summary::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.faq details p {
+  margin: 0;
+  padding: 0 1.25rem 1rem;
+}
+
+/* Transparenzhinweis (fiktiv / Demo) */
+.notice {
+  max-width: none;
+  padding: var(--space-s) 1.25rem;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-l);
+}
+
+.hero-grid + .container .notice {
+  margin-top: var(--space-m);
+}
+
+
+/* 19. FORMULAR -------------------------------------------------------------- */
+.form-layout {
+  display: grid;
+  gap: var(--space-m);
+}
+
+.form > fieldset {
+  min-width: 0;
+  margin: 0 0 var(--space-m);
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l);
+}
+
+.form legend {
+  padding: 0 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-heading);
+}
+
+.form-grid {
+  display: grid;
+  gap: 0 var(--space-s);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: var(--space-s);
+}
+
+.field label {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: var(--tap-size);
+  padding: 0.65rem 0.85rem;
+  font: inherit;
+  color: var(--color-text);
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-muted);
+  border-radius: var(--radius);
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: var(--color-accent-text);
+}
+
+.required-mark {
+  color: var(--color-error);
+}
+
+/* Fehleranzeige rein per CSS: :user-invalid greift erst nach einer Eingabe.
+   Fehler werden als Text UND mit dickem Rahmen gezeigt (nicht nur über Farbe). */
+.field-error {
+  display: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-error);
+}
+
+.field-error::before {
+  content: "Fehler: ";
+}
+
+.field input:user-invalid,
+.field select:user-invalid,
+.field textarea:user-invalid {
+  border: 2px solid var(--color-error);
+}
+
+.field input:user-invalid ~ .field-error,
+.field select:user-invalid ~ .field-error,
+.field textarea:user-invalid ~ .field-error {
+  display: block;
+}
+
+/* Radio-Buttons und Checkboxen als gut klickbare Zeilen */
+.choice-group {
+  min-width: 0;
+  margin: 0 0 var(--space-s);
+  padding: 0;
+  border: 0;
+}
+
+.form .choice-group legend {
+  margin-bottom: 0.35rem;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  min-height: var(--tap-size);
+  padding: 0.35rem 0;
+}
+
+.choice input {
+  flex: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-top: 0.2rem;
+  accent-color: var(--moss);
+}
+
+#darkmode-toggle:checked ~ .site-wrapper .choice input {
+  accent-color: #d9b88f;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Bestätigung ohne JavaScript: nur sichtbar, wenn die Adresse auf #anfrage-demo endet */
+.demo-result {
+  display: none;
+  margin-bottom: var(--space-m);
+}
+
+.demo-result:target {
+  display: block;
+}
+
+.side-box {
+  margin-bottom: var(--space-s);
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border-radius: var(--radius-l);
+}
+
+.side-box > :last-child {
+  margin-bottom: 0;
+}
+
+.side-box h2 {
+  font-size: clamp(1.25rem, 1vw + 1rem, 1.6rem);
+}
+
+
+/* 20. TEXTSEITE (Impressum) ------------------------------------------------- */
+.doc {
+  display: grid;
+  gap: var(--space-m);
+}
+
+.doc-nav {
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border-radius: var(--radius-l);
+}
+
+.doc-nav ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.doc-nav li {
+  padding-block: 0.25rem;
+}
+
+.doc-section {
+  padding-bottom: var(--space-m);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.doc-section:last-child {
+  border-bottom: 0;
+}
+
+.doc-section h2 {
+  font-size: clamp(1.4rem, 1.5vw + 1rem, 2rem);
+}
+
+
+/* 21. ABSCHLUSS-BAND UND FOOTER --------------------------------------------- */
+/* Abschluss jeder Seite: oben gerundet, geht nahtlos in den Footer über */
+.cta-band {
+  border-radius: 2.5rem 2.5rem 0 0;
+}
+
+.cta-band__grid {
+  display: grid;
+  gap: var(--space-m) var(--space-l);
+  align-items: center;
+}
+
+.cta-band__grid h2 {
+  margin-bottom: 0;
+  font-size: clamp(2rem, 3vw + 1rem, 3.2rem);
+  font-style: italic;
+}
+
+.site-footer {
+  padding-top: var(--space-l);
+  color: var(--color-on-dark);
+  background: var(--color-footer);
+}
+
+/* Großes Logo zentriert */
+.footer-head {
+  margin-bottom: var(--space-l);
+  padding-bottom: var(--space-m);
+  text-align: center;
+  border-bottom: 1px solid rgba(247, 243, 236, 0.2);
+}
+
+.footer-brand {
+  max-width: none;
+  margin-bottom: var(--space-xs);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: 0.32em;
+  margin-right: -0.32em;
+}
+
+.footer-claim {
+  margin-inline: auto;
+  font-family: var(--font-heading);
+  font-style: italic;
+  color: var(--color-accent-on-dark);
+}
+
+.footer-grid {
+  display: grid;
+  gap: var(--space-m);
+}
+
+.footer-title {
+  margin-bottom: var(--space-xs);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent-on-dark);
+}
+
+.site-footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer li a {
+  display: inline-block;
+  min-height: var(--tap-size);
+  padding-block: 0.35rem;
+  line-height: 2;
+}
+
+.site-footer a {
+  color: var(--color-on-dark);
+}
+
+.site-footer a:hover {
+  color: var(--color-accent-on-dark);
+}
+
+.site-footer a[aria-current="page"] {
+  font-weight: 600;
+  text-decoration-color: var(--color-accent-on-dark);
+  text-decoration-thickness: 2px;
+}
+
+.footer-bottom {
+  margin-top: var(--space-m);
+  padding-block: var(--space-s);
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(247, 243, 236, 0.2);
+}
+
+.footer-bottom p {
+  max-width: none;
+  margin: 0.25rem 0;
+}
+
+.dhbw-disclaimer {
+  font-weight: 600;
+}
+
+
+/* 22. RESPONSIVE ANPASSUNGEN (Mobile First: Basis = Smartphone ab 320 px) --- */
+
+/* Tablet ab 768 px */
+@media (min-width: 48em) {
+  .suite-grid,
+  .split-head,
+  .cta-band__grid,
+  .form-grid,
+  .swot,
+  .card-grid--2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-grid .field--full {
+    grid-column: 1 / -1;
+  }
+
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Suiten-Zeilen: Bild links, Text rechts – jede zweite Zeile gespiegelt */
+  .suite-row {
+    grid-template-columns: 5fr 6fr;
+    gap: var(--space-l);
+  }
+
+  .suite-row:nth-child(even) .suite-row__media {
+    order: 2;
+    justify-self: end;
+  }
+
+  /* Zickzack: Nummer links bzw. rechts */
+  .chapter {
+    grid-template-columns: 10rem 1fr;
+    gap: var(--space-m);
+    align-items: start;
+  }
+
+  .chapter:nth-child(even) {
+    grid-template-columns: 1fr 10rem;
+  }
+
+  .chapter:nth-child(even)::before {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: right;
+  }
+
+  .chapter:nth-child(even) > .chapter__body {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  /* Bildbühne: Karte liegt unten links auf dem Bild */
+  .stage__img {
+    grid-area: 1 / 1;
+  }
+
+  .stage > .container {
+    grid-area: 1 / 1;
+    align-self: end;
+    padding-bottom: var(--space-l);
+  }
+
+  .stage__card {
+    margin-top: 0;
+  }
+}
+
+/* Desktop ab 1024 px */
+@media (min-width: 64em) {
+  /* Header: Logo oben zentriert, Navigation in der zweiten Zeile */
+  .header-inner {
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas:
+      "dark brand ."
+      "nav  nav   nav";
+    padding-block: 0.75rem 0;
+  }
+
+  .nav-burger {
+    display: none;
+  }
+
+  .site-nav {
+    display: block;
+    padding-block: 0.5rem 0.35rem;
+  }
+
+  .site-nav ul {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .site-nav a:not(.btn) {
+    min-height: 0;
+    padding: 0.4rem 0;
+    font-size: 0.92rem;
+    white-space: nowrap;
+    border-bottom-color: transparent;
+  }
+
+  .site-nav .btn {
+    margin-top: 0;
+    padding: 0.45rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  /* Geteiltes Titelbild */
+  .hero-split {
+    grid-template-columns: 1fr 1fr;
+    min-height: min(85vh, 50rem);
+  }
+
+  .hero-split__text {
+    padding: var(--space-l) var(--space-l) var(--space-l) max(1.25rem, (100vw - 75rem) / 2);
+  }
+
+  .hero-split__media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-l);
+  }
+
+  .arch--hero {
+    width: auto;
+    height: 100%;
+    max-height: 40rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-l);
+  }
+
+  .concept {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rate-card {
+    grid-template-columns: 7fr 5fr;
+  }
+
+  .table-pair {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  /* Split-Screen: schmale Kennzahlen-Spalte + breite Argumentation */
+  .split-screen {
+    grid-template-columns: 5fr 7fr;
+    gap: var(--space-l);
+    align-items: start;
+  }
+
+  .split-screen--reverse {
+    grid-template-columns: 7fr 5fr;
+  }
+
+  .split-screen--reverse .split-screen__aside {
+    order: 2;
+  }
+
+  .split-screen__aside {
+    position: sticky;
+    top: 9rem;
+    padding: var(--space-l) var(--space-m);
+  }
+
+  .suite-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-layout {
+    grid-template-columns: 8fr 4fr;
+    align-items: start;
+  }
+
+  .form-aside {
+    position: sticky;
+    top: 9rem;
+  }
+
+  .doc {
+    grid-template-columns: 16rem 1fr;
+    gap: var(--space-l);
+    align-items: start;
+  }
+
+  .doc-nav {
+    position: sticky;
+    top: 9rem;
+  }
+
+  /* Editorial-Bänder: Bild 8 von 12 Spalten, Textkarte überlappt */
+  .band {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 0;
+  }
+
+  .band__media {
+    grid-column: 1 / 9;
+    grid-row: 1;
+  }
+
+  .band__text {
+    grid-column: 8 / 13;
+    grid-row: 1;
+    padding: var(--space-l) var(--space-m);
+    background: var(--color-surface);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow);
+  }
+
+  .band--reverse .band__media {
+    grid-column: 5 / 13;
+  }
+
+  .band--reverse .band__text {
+    grid-column: 1 / 6;
+  }
+
+  /* 12-Spalten-Bento: verschiedene Spannweiten ergeben die Asymmetrie */
+  .bento {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .bento__item--4 { grid-column: span 4; }
+  .bento__item--5 { grid-column: span 5; }
+  .bento__item--6 { grid-column: span 6; }
+  .bento__item--7 { grid-column: span 7; }
+  .bento__item--8 { grid-column: span 8; }
+}
+
+/* Großer Desktop ab 1440 px */
+@media (min-width: 90em) {
+  .container {
+    width: min(100% - 4rem, 80rem);
+  }
+}
+
+
+/* 23. ANIMATIONEN ----------------------------------------------------------
+   Ruhig und kurz. Alle Animationen stehen in @media (prefers-reduced-motion: no-preference):
+   Wer „Bewegung reduzieren“ eingestellt hat, sieht sie nicht.
+   Animiert werden nur opacity und transform (kein Layout-Springen). */
+@keyframes einblenden-hoch {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes einblenden {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bogen-heben {
+  from {
+    opacity: 0;
+    transform: translateY(2rem) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Seiteneinstieg: Textbausteine erscheinen nacheinander */
+  .hero-split__text > *,
+  .hero > .container > *,
+  .hero-grid > * {
+    animation: einblenden-hoch 0.9s var(--ease-out) both;
+  }
+
+  .hero-split__text > :nth-child(2),
+  .hero > .container > :nth-child(2),
+  .hero-grid > :nth-child(2) { animation-delay: 0.1s; }
+
+  .hero-split__text > :nth-child(3),
+  .hero > .container > :nth-child(3) { animation-delay: 0.2s; }
+
+  .hero-split__text > :nth-child(n+4),
+  .hero > .container > :nth-child(n+4) { animation-delay: 0.3s; }
+
+  /* Titelbild im Rundbogen hebt sich weich ins Bild */
+  .arch--hero {
+    animation: bogen-heben 1.2s var(--ease-out) 0.2s both;
+  }
+
+  /* Karten und Kacheln heben sich beim Überfahren leicht an */
+  .card,
+  .step,
+  .landmark,
+  .review article {
+    transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+  }
+
+  .card:hover,
+  .step:hover,
+  .landmark:hover,
+  .review article:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+
+  /* Preiskarte: Zeile rückt beim Überfahren ein Stück ein */
+  .rate-list__name {
+    transition: transform 0.35s var(--ease-out), color var(--transition);
+  }
+
+  .rate-list__row:hover .rate-list__name,
+  .rate-list__row:focus-visible .rate-list__name {
+    transform: translateX(0.5rem);
+  }
+
+  /* Textlink: Pfeil wandert nach rechts */
+  .link-more:hover::after,
+  .link-more:focus-visible::after {
+    transform: translateX(4px);
+  }
+
+  /* Hauptnavigation: Kupferlinie wächst von links */
+  .site-nav a:not(.btn) {
+    position: relative;
+  }
+
+  .site-nav a:not(.btn)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s var(--ease-out);
+  }
+
+  .site-nav a:not(.btn):hover::after,
+  .site-nav a:not(.btn):focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  /* Dark-Mode-Symbol dreht sich beim Umschalten */
+  .darkmode-label::before {
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  #darkmode-toggle:checked ~ .site-wrapper .darkmode-label::before {
+    transform: rotate(180deg);
+  }
+
+  /* Menü, Programm-Panel, Bewertungen, FAQ, Demo-Bestätigung blenden ein.
+     Die Animation startet neu, sobald ein Element von display: none sichtbar wird. */
+  .nav-toggle:checked ~ .site-nav,
+  .programs__panel,
+  .demo-result:target {
+    animation: einblenden-hoch 0.45s var(--ease-out) both;
+  }
+
+  .review,
+  .faq details[open] > p {
+    animation: einblenden 0.4s ease-out both;
+  }
+}
+
+
+/* 24. BARRIEREFREIHEIT UND DRUCK -------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Druckansicht: nur Inhalt, alle Programm-Panels sichtbar */
+@media print {
+  .site-header,
+  .footer-grid,
+  .cta-band,
+  .skip-link,
+  .programs__label,
+  .form-actions {
+    display: none;
+  }
+
+  .programs__panel {
+    display: block;
+  }
+
+  .site-wrapper,
+  .section--dark,
+  .hero-split__text,
+  .site-footer {
+    color: #000000;
+    background: #ffffff;
+  }
+
+  .hero-split__text h1,
+  .section--dark h2,
+  .site-footer a {
+    color: #000000;
+  }
+}
