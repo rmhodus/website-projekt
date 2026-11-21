@@ -8,28 +8,80 @@
 </head>
 <body>
   <header>
-    <a href="index.html">Fellness</a>
-    <nav aria-label="Hauptnavigation">
-      <ul>
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="zimmer.html" aria-current="page">Zimmer</a></li>
-        <li><a href="wellness.html">Wellness</a></li>
-        <li><a href="rezensionen.html">Rezensionen</a></li>
-        <li><a href="ueber-uns.html">Über uns</a></li>
-        <li><a href="buchung.html">Jetzt buchen</a></li>
-      </ul>
-    </nav>
+  <input type="checkbox" id="darkmode-toggle" class="visually-hidden">
+  <div class="site-wrapper">
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <label class="darkmode-label" for="darkmode-toggle"><span class="visually-hidden">Dunkles Design ein- oder ausschalten</span></label>
+        <a class="brand" href="index.html">
+          <span class="brand-name">FELLNESS</span>
+          <span class="brand-place">Wellnesshotel · Alpen</span>
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle visually-hidden">
+        <label class="nav-burger" for="nav-toggle">Menü</label>
+        <nav class="site-nav" aria-label="Hauptnavigation">
+          <ul>
+            <li><a href="zimmer.html" aria-current="page">Zimmer</a></li>
+            <li><a href="wellness.html">Wellness</a></li>
+            <li><a href="rezensionen.html">Rezensionen</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a class="btn" href="buchung.html">Jetzt buchen</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
   </header>
 
-  <main>
+  <main id="main">
     <h1>Panorama-Suite</h1>
     <p>Inhalt folgt.</p>
     <p><a href="buchung.html">Diese Suite buchen</a></p>
   </main>
 
   <footer>
-    <p><a href="impressum.html">Impressum</a></p>
-    <p>Fiktive Arbeit im Rahmen eines Projekts an der DHBW Heidenheim.</p>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-head">
+          <p class="footer-brand">FELLNESS</p>
+          <p class="footer-claim">Stille ist der neue Luxus.</p>
+        </div>
+        <div class="footer-grid">
+          <nav aria-labelledby="footer-entdecken">
+            <h2 class="footer-title" id="footer-entdecken">Entdecken</h2>
+            <ul>
+              <li><a href="index.html">Startseite</a></li>
+              <li><a href="zimmer.html">Zimmer</a></li>
+              <li><a href="wellness.html">Wellness &amp; Spa</a></li>
+              <li><a href="rezensionen.html">Rezensionen</a></li>
+              <li><a href="ueber-uns.html">Über uns</a></li>
+            </ul>
+          </nav>
+          <nav aria-labelledby="footer-planen">
+            <h2 class="footer-title" id="footer-planen">Planen</h2>
+            <ul>
+              <li><a href="buchung.html">Aufenthalt buchen</a></li>
+              <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+          </nav>
+          <div>
+            <h2 class="footer-title">Kontakt</h2>
+            <address>
+              FELLNESS Wellnesshotel (fiktiv)<br>
+              Beispielweg 1<br>
+              12345 Musterort<br>
+              <a href="mailto:kontakt@fellness.example">kontakt@fellness.example</a>
+            </address>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 FELLNESS – Studienprojekt</p>
+          <p class="dhbw-disclaimer">Diese Webseite ist eine fiktive Studienarbeit im Rahmen des Studiengangs Wirtschaftsinformatik an der DHBW Heidenheim.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
   </footer>
 </body>
 </html>
