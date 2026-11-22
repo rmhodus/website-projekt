@@ -33,11 +33,125 @@
     </header>
 
     <main id="main">
-      <h1>Aufenthalt buchen</h1>
-      <p>Formular folgt.</p>
-      <form action="danke.html">
-        <button type="submit">Verbindlich buchen</button>
-      </form>
+
+      <section class="hero hero--compact" aria-labelledby="seiten-titel">
+        <div class="container container--narrow">
+          <p class="eyebrow">Buchung</p>
+          <h1 id="seiten-titel">Aufenthalt buchen</h1>
+          <p class="lead">Wählen Sie Ihre Reisedaten und Ihr Zimmer. Pflichtfelder sind mit * gekennzeichnet.</p>
+          <p class="notice"><strong>Demo-Formular:</strong> FELLNESS ist ein fiktives Hotel im Rahmen eines Studienprojekts. Ihre Eingaben werden weder gespeichert noch versendet.</p>
+        </div>
+      </section>
+
+      <!-- Layout D: Formular mit Infospalte -->
+      <section class="section" aria-labelledby="formular-titel">
+        <div class="container">
+          <h2 id="formular-titel" class="visually-hidden">Buchungsformular</h2>
+          <div class="form-layout">
+            <!-- Ohne Backend: Das Absenden öffnet nur die Bestätigungsseite danke.html -->
+            <form class="form" action="danke.html" method="get">
+              <fieldset>
+                <legend>1 · Ihre Reise</legend>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="anreise">Anreise <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input type="date" id="anreise" name="anreise" required min="2026-12-01" max="2028-12-31" aria-describedby="anreise-fehler">
+                    <span class="field-error" id="anreise-fehler">Bitte wählen Sie ein Datum ab dem 01.12.2026.</span>
+                  </div>
+                  <div class="field">
+                    <label for="abreise">Abreise <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input type="date" id="abreise" name="abreise" required min="2026-12-02" max="2029-01-01" aria-describedby="abreise-hinweis abreise-fehler">
+                    <span class="hint" id="abreise-hinweis">Bitte nach dem Anreisedatum wählen.</span>
+                    <span class="field-error" id="abreise-fehler">Bitte wählen Sie ein Datum ab dem 02.12.2026.</span>
+                  </div>
+                  <div class="field">
+                    <label for="zimmer">Zimmer <span class="required-mark" aria-hidden="true">*</span></label>
+                    <select id="zimmer" name="zimmer" required aria-describedby="zimmer-fehler">
+                      <option value="">Bitte wählen</option>
+                      <option>Einzelzimmer (1 Gast)</option>
+                      <option>Panorama-Suite (bis 2 Gäste)</option>
+                    </select>
+                    <span class="field-error" id="zimmer-fehler">Bitte wählen Sie ein Zimmer.</span>
+                  </div>
+                  <div class="field">
+                    <label for="gaeste">Gäste <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input type="number" id="gaeste" name="gaeste" required min="1" max="2" value="1" inputmode="numeric" aria-describedby="gaeste-hinweis gaeste-fehler">
+                    <span class="hint" id="gaeste-hinweis">Einzelzimmer: 1 Gast, Panorama-Suite: bis 2 Gäste</span>
+                    <span class="field-error" id="gaeste-fehler">Bitte 1 oder 2 Gäste angeben.</span>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>2 · Ihre Daten</legend>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="vorname">Vorname <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input type="text" id="vorname" name="vorname" required autocomplete="given-name" aria-describedby="vorname-fehler">
+                    <span class="field-error" id="vorname-fehler">Bitte geben Sie Ihren Vornamen an.</span>
+                  </div>
+                  <div class="field">
+                    <label for="nachname">Nachname <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input type="text" id="nachname" name="nachname" required autocomplete="family-name" aria-describedby="nachname-fehler">
+                    <span class="field-error" id="nachname-fehler">Bitte geben Sie Ihren Nachnamen an.</span>
+                  </div>
+                  <div class="field">
+                    <label for="email">E-Mail-Adresse <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="email-hinweis email-fehler">
+                    <span class="hint" id="email-hinweis">Zum Beispiel name@beispiel.de</span>
+                    <span class="field-error" id="email-fehler">Bitte geben Sie eine gültige E-Mail-Adresse mit @ an.</span>
+                  </div>
+                  <div class="field">
+                    <label for="telefon">Telefonnummer <span class="required-mark" aria-hidden="true">*</span></label>
+                    <input type="tel" id="telefon" name="telefon" required autocomplete="tel" pattern="[0-9+ ()/-]{6,20}" aria-describedby="telefon-hinweis telefon-fehler">
+                    <span class="hint" id="telefon-hinweis">Ziffern, Leerzeichen und + ( ) / - erlaubt</span>
+                    <span class="field-error" id="telefon-fehler">Bitte geben Sie eine Telefonnummer mit 6 bis 20 Zeichen an.</span>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>3 · Ihre Wünsche</legend>
+                <div class="field">
+                  <label for="wuensche">Ihre Wünsche (optional)</label>
+                  <textarea id="wuensche" name="wuensche" rows="4" maxlength="800" aria-describedby="wuensche-hinweis"></textarea>
+                  <span class="hint" id="wuensche-hinweis">Zum Beispiel Anlass der Reise oder Allergien. Höchstens 800 Zeichen.</span>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>4 · Datenschutz</legend>
+                <label class="choice">
+                  <input type="checkbox" name="datenschutz" required>
+                  <span>Ich habe die <a href="impressum.html">Datenschutzhinweise</a> gelesen und bin mit der Verarbeitung meiner Angaben einverstanden. <span class="required-mark" aria-hidden="true">*</span></span>
+                </label>
+              </fieldset>
+
+              <div class="form-actions">
+                <button class="btn" type="submit">Verbindlich buchen (Demo)</button>
+                <button class="btn btn--outline" type="reset">Eingaben zurücksetzen</button>
+              </div>
+            </form>
+
+            <aside class="form-aside" aria-labelledby="ablauf-titel">
+              <div class="side-box">
+                <h2 id="ablauf-titel">So geht es weiter</h2>
+                <ol>
+                  <li>Sie senden das Formular ab.</li>
+                  <li>Wir bestätigen Ihre Buchung per E-Mail.</li>
+                  <li>Wir bereiten Ihr Zimmer für die Ankunft vor.</li>
+                </ol>
+                <p class="note">In dieser Demo findet keine Bearbeitung statt.</p>
+              </div>
+              <div class="side-box">
+                <h2 id="kontakt-titel">Fragen vorab?</h2>
+                <p><a href="mailto:kontakt@fellness.example">kontakt@fellness.example</a></p>
+                <p><a href="zimmer.html">Zimmer vergleichen</a></p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
