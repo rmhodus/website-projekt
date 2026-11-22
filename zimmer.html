@@ -37,11 +37,113 @@
 
   
   
-  <main id="main">
-    <h1>Zimmer &amp; Suiten</h1>
-    <p>Inhalt folgt.</p>
-    <p><a href="zimmer-detail.html">Panorama-Suite ansehen</a></p>
-  </main>
+    <main id="main">
+
+      <section class="hero hero--compact" aria-labelledby="seiten-titel">
+        <div class="container">
+          <p class="eyebrow">Zimmer &amp; Preise</p>
+          <h1 id="seiten-titel">Zimmer und Suite</h1>
+          <p class="lead">Zwei Kategorien, ein Anspruch: Ruhe, Blick auf See und Berge und ein eigener Balkon. Vergleichen Sie unsere Zimmer und finden Sie das passende.</p>
+          <dl class="kpi-list">
+            <div><dt>Zimmertypen</dt><dd>2</dd></div>
+            <div><dt>Wohnfläche</dt><dd>22–62 m²</dd></div>
+            <div><dt>Gäste pro Zimmer</dt><dd>bis 2</dd></div>
+            <div><dt>Balkon mit Seeblick</dt><dd>alle</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Layout B: große Zeilen im Zickzack, darunter die Vergleichstabelle -->
+      <section class="section" aria-labelledby="kategorien-titel">
+        <div class="container">
+          <h2 id="kategorien-titel" class="section-head">Unsere Kategorien</h2>
+          <div class="suite-rows">
+            <article class="suite-row" id="einzelzimmer" aria-labelledby="einzelzimmer-titel">
+              <div class="suite-row__media">
+                <img class="arch" src="images/zimmer-einzelzimmer.webp" alt="Einzelzimmer mit französischem Bett, Schreibtisch am Fenster, Sessel und Balkon über dem Bergsee" width="1200" height="800" loading="lazy">
+              </div>
+              <div class="suite-row__body">
+                <p class="kicker">ca. 22 m² + Balkon · 1 Gast</p>
+                <h3 id="einzelzimmer-titel">Einzelzimmer</h3>
+                <p>Für alle, die allein zur Ruhe kommen möchten: ein heller Raum aus Eiche und Leinen, mit Schreibtisch am Fenster und Blick über den See.</p>
+                <ul class="check-list">
+                  <li>Französisches Bett, 1,40 m breit</li>
+                  <li>Schreibtisch mit Seeblick und Sessel</li>
+                  <li>Duschbad und eigener Balkon</li>
+                </ul>
+                <p class="price">ab 290 € pro Nacht*</p>
+                <a class="btn" href="buchung.html">Einzelzimmer buchen</a>
+              </div>
+            </article>
+            <article class="suite-row" id="panorama-suite" aria-labelledby="panorama-suite-titel">
+              <div class="suite-row__media">
+                <img class="arch" src="images/zimmer-panorama-suite.webp" alt="Panorama-Suite mit zweiseitigem Kamin zwischen Schlaf- und Wohnbereich und Balkon zum See" width="1200" height="800" loading="lazy">
+              </div>
+              <div class="suite-row__body">
+                <p class="kicker">ca. 62 m² + Balkon · bis 2 Gäste</p>
+                <h3 id="panorama-suite-titel">Panorama-Suite</h3>
+                <p>Unsere großzügigste Kategorie: Schlaf- und Wohnbereich, getrennt durch einen zweiseitigen Kamin, ein Bad mit freistehender Wanne und ein Balkon aus Lärchenholz mit Blick auf See und Gipfel.</p>
+                <ul class="check-list">
+                  <li>Kingsize-Bett, 1,80 × 2,00 m</li>
+                  <li>Zweiseitiger Kamin und begehbarer Kleiderschrank</li>
+                  <li>Freistehende Badewanne und Walk-in-Dusche</li>
+                </ul>
+                <p class="price">ab 690 € pro Nacht*</p>
+                <div class="btn-row">
+                  <a class="btn" href="zimmer-detail.html">Suite im Detail</a>
+                  <a class="btn btn--outline" href="buchung.html">Suite buchen</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vergleichstabelle: auf schmalen Geräten scrollt nur die Tabelle -->
+      <section class="section section--surface" aria-labelledby="vergleich-titel">
+        <div class="container">
+          <h2 id="vergleich-titel">Beide Zimmer im Vergleich</h2>
+          <div class="table-scroll" tabindex="0" role="region" aria-labelledby="vergleich-caption">
+            <table class="data-table">
+              <caption id="vergleich-caption">Vergleich der Zimmerkategorien</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Kriterium</th>
+                  <th scope="col">Einzelzimmer</th>
+                  <th scope="col">Panorama-Suite</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Wohnfläche</th><td>ca. 22 m²</td><td>ca. 62 m²</td></tr>
+                <tr><th scope="row">Gäste</th><td>1</td><td>bis 2</td></tr>
+                <tr><th scope="row">Bett</th><td>Französisches Bett 1,40 m</td><td>Kingsize 1,80 × 2,00 m</td></tr>
+                <tr><th scope="row">Bad</th><td>Duschbad</td><td>Freistehende Wanne, Walk-in-Dusche, Doppelwaschtisch</td></tr>
+                <tr><th scope="row">Besonderheit</th><td>Schreibtisch mit Seeblick</td><td>Zweiseitiger Kamin, Foyer, separates WC</td></tr>
+                <tr><th scope="row">Balkon</th><td>ja</td><td>ja, Lärchenholz mit zwei Liegestühlen</td></tr>
+                <tr><th scope="row">Preis pro Nacht*</th><td>ab 290 €</td><td>ab 690 €</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="notice">* Fiktive Beispielpreise im Rahmen eines Studienprojekts, pro Nacht inklusive Frühstück.</p>
+        </div>
+      </section>
+
+      <!-- Abschluss-Band -->
+      <section class="section section--dark cta-band" aria-labelledby="cta-titel">
+        <div class="container cta-band__grid">
+          <div>
+            <p class="eyebrow">Ihre Auszeit</p>
+            <h2 id="cta-titel">Ihr Zimmer gefunden?</h2>
+          </div>
+          <div>
+            <p>Wählen Sie Reisedaten und Zimmer – wir bereiten alles für Ihre Ankunft vor.</p>
+            <div class="btn-row">
+              <a class="btn" href="buchung.html">Zimmer buchen</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
 
     <footer class="site-footer">
