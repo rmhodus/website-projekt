@@ -32,10 +32,114 @@
       </div>
     </header>
 
-    <main id="main">
-      <h1>Panorama-Suite</h1>
-      <p>Inhalt folgt.</p>
-      <p><a href="buchung.html">Diese Suite buchen</a></p>
+<main id="main">
+
+      <section class="hero hero--compact" aria-labelledby="seiten-titel">
+        <div class="container">
+          <p class="eyebrow"><a href="zimmer.html">Zimmer</a> · Panorama-Suite</p>
+          <h1 id="seiten-titel">Panorama-Suite</h1>
+          <p class="lead">Ein Raum, in dem das Feuer brennt und draußen der See liegt: Unsere Panorama-Suite verbindet Schlafen, Wohnen und Baden – mit Balkon aus Lärchenholz und Blick auf die Gipfel.</p>
+          <dl class="kpi-list">
+            <div><dt>Wohnfläche</dt><dd>ca. 62 m²</dd></div>
+            <div><dt>Gäste</dt><dd>bis 2</dd></div>
+            <div><dt>Bett</dt><dd>1,80 × 2,00 m</dd></div>
+            <div><dt>Preis pro Nacht*</dt><dd>ab 690 €</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Layout C: großes Bild im Rundbogen neben Beschreibung -->
+      <section class="section" aria-labelledby="raum-titel">
+        <div class="container">
+          <article class="suite-row">
+            <div class="suite-row__media">
+              <img class="arch" src="images/zimmer-panorama-suite.webp" alt="Panorama-Suite mit zweiseitigem Kamin zwischen Schlaf- und Wohnbereich und Balkon zum See" width="1200" height="800" loading="lazy">
+            </div>
+            <div class="suite-row__body">
+              <p class="kicker">Wohnen &amp; Schlafen</p>
+              <h2 id="raum-titel">Ein Kamin, zwei Seiten</h2>
+              <p>Durch das Foyer mit begehbarem Kleiderschrank und separatem WC betreten Sie den Wohnbereich. Ein zweiseitiger Kamin trennt ihn vom Schlafbereich – so sehen Sie das Feuer vom Sofa und vom Bett aus.</p>
+              <ul class="check-list">
+                <li>Foyer mit begehbarem Kleiderschrank</li>
+                <li>Separates WC</li>
+                <li>Kingsize-Bett 1,80 × 2,00 m</li>
+                <li>Zweiseitiger Kamin zwischen Wohn- und Schlafbereich</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Bento-Raster: unterschiedlich große Kacheln -->
+      <section class="section section--surface" aria-labelledby="ausstattung-titel">
+        <div class="container">
+          <h2 id="ausstattung-titel" class="section-head">Alles, was zur Suite gehört</h2>
+          <div class="bento">
+            <article class="bento__item bento__item--8" aria-labelledby="b-bad">
+              <h3 id="b-bad">Bad</h3>
+              <ul class="check-list">
+                <li>Freistehende Badewanne</li>
+                <li>Walk-in-Dusche</li>
+                <li>Doppelwaschtisch aus Travertin</li>
+              </ul>
+            </article>
+            <article class="bento__item bento__item--4 bento__item--accent" aria-labelledby="b-blick">
+              <h3 id="b-blick">Auf einen Blick</h3>
+              <dl class="schedule">
+                <dt>Fläche</dt><dd>ca. 62 m²</dd>
+                <dt>Gäste</dt><dd>bis 2</dd>
+                <dt>Bett</dt><dd>Kingsize</dd>
+                <dt>Balkon</dt><dd>ja</dd>
+              </dl>
+            </article>
+            <article class="bento__item bento__item--6" aria-labelledby="b-balkon">
+              <h3 id="b-balkon">Balkon aus Lärchenholz</h3>
+              <p>Zwei Liegestühle und der Blick über den See zu den Gipfeln. Morgens der erste Kaffee, abends das letzte Licht am Berg.</p>
+            </article>
+            <article class="bento__item bento__item--6 bento__item--dark" aria-labelledby="b-spa">
+              <h3 id="b-spa">Spa inklusive</h3>
+              <p>Innenpool, Infinity-Pool, Sauna, Dampfbad und Panorama-Ruheraum stehen Ihnen während des ganzen Aufenthalts offen.</p>
+              <a class="link-more" href="wellness.html">Zum Spa</a>
+            </article>
+          </div>
+          <p class="notice">* Fiktiver Beispielpreis im Rahmen eines Studienprojekts, pro Nacht inklusive Frühstück.</p>
+        </div>
+      </section>
+
+      <!-- Häufige Fragen: aufklappen ohne JavaScript -->
+      <section class="section faq" aria-labelledby="faq-titel">
+        <div class="container container--narrow">
+          <h2 id="faq-titel">Häufige Fragen</h2>
+          <details>
+            <summary>Ist die Suite für zwei Personen geeignet?</summary>
+            <p>Ja. Die Panorama-Suite ist für bis zu zwei Gäste ausgelegt. Für Alleinreisende gibt es zusätzlich unser <a href="zimmer.html#einzelzimmer">Einzelzimmer</a>.</p>
+          </details>
+          <details>
+            <summary>Sind Haustiere erlaubt?</summary>
+            <p>Nein. Aus Rücksicht auf die Ruhe aller Gäste nehmen wir keine Haustiere auf.</p>
+          </details>
+          <details>
+            <summary>Ist der Aufenthalt wirklich buchbar?</summary>
+            <p>Nein. FELLNESS ist ein fiktives Hotel im Rahmen eines Studienprojekts der DHBW Heidenheim. Das Buchungsformular dient nur der Demonstration.</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Abschluss-Band -->
+      <section class="section section--dark cta-band" aria-labelledby="cta-titel">
+        <div class="container cta-band__grid">
+          <div>
+            <p class="eyebrow">Ihre Auszeit</p>
+            <h2 id="cta-titel">Die Panorama-Suite buchen</h2>
+          </div>
+          <div>
+            <p>Wählen Sie Ihre Reisedaten – wir bereiten den Kamin vor.</p>
+            <div class="btn-row">
+              <a class="btn" href="buchung.html">Diese Suite buchen</a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
