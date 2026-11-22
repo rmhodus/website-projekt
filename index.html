@@ -36,10 +36,141 @@
       </div>
   </header>
 
-  <main id="main">
-    <p>Inhalt folgt.</p>
-    <p><a href="buchung.html">Aufenthalt buchen</a></p>
-  </main>
+    <main id="main">
+
+      <!-- Layout A: geteiltes Titelbild. Links Text auf Moos-Fläche, rechts Bild im Rundbogen. -->
+      <section class="hero-split" aria-labelledby="hero-titel">
+        <div class="hero-split__text">
+          <p class="eyebrow">5-Sterne-Wellnesshotel · Alpen</p>
+          <h1 id="hero-titel">Stille ist der neue Luxus.</h1>
+          <p class="lead">Ein Wellnesshotel am Bergsee, mit Blick auf verschneite Gipfel – für Menschen, die sonst immer erreichbar sind. Bei uns ruht das Smartphone, und Sie kommen an.</p>
+          <div class="btn-row">
+            <a class="btn btn--light" href="buchung.html">Aufenthalt buchen</a>
+            <a class="btn btn--ghost" href="zimmer.html">Zimmer ansehen</a>
+          </div>
+          <dl class="hero-split__facts">
+            <div><dt>Zimmer, alle mit Balkon und Seeblick</dt><dd>22–62 m²</dd></div>
+            <div><dt>innen und außen, ganzjährig</dt><dd>2 Pools</dd></div>
+            <div><dt>Bildschirme im Spa</dt><dd>0</dd></div>
+          </dl>
+        </div>
+        <div class="hero-split__media">
+          <img class="arch arch--hero" src="images/hero-alpen.webp" alt="Das FELLNESS in der Abenddämmerung: beleuchtetes Holzgebäude mit dampfendem Außenpool, daneben ein Bergsee, dahinter verschneite Gipfel" width="1340" height="893" fetchpriority="high">
+        </div>
+      </section>
+
+      <!-- Ablauf in drei Schritten -->
+      <section class="section" aria-labelledby="ablauf-titel">
+        <div class="container">
+          <div class="section-head text-center">
+            <p class="eyebrow">So einfach geht Ruhe</p>
+            <h2 id="ablauf-titel">Ihr Aufenthalt in drei Schritten</h2>
+          </div>
+          <ol class="steps">
+            <li class="step">
+              <h3>Buchen</h3>
+              <p>Sie wählen Ihre Reisedaten und Ihr Zimmer – Einzelzimmer oder Panorama-Suite. Alles Weitere bereiten wir vor.</p>
+            </li>
+            <li class="step">
+              <h3>Ankommen</h3>
+              <p>Die Lobby öffnet sich über zwei Etagen: Kamin, Eiche, Travertin und eine Glasfront zu See und Bergen. Ein Tee am Feuer statt Warteschlange.</p>
+            </li>
+            <li class="step">
+              <h3>Abschalten</h3>
+              <p>Innenpool, Infinity-Pool im Schnee, Sauna und Ruheraum. Keine Bildschirme im Spa – nur Zeit, die wieder Ihnen gehört.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Das Hotel: großer Satz mit drei versetzten Bildern -->
+      <section class="section section--surface section--pattern" aria-labelledby="konzept-titel">
+        <div class="container concept">
+          <div class="concept__text">
+            <p class="eyebrow">Das Hotel</p>
+            <h2 id="konzept-titel" class="statement">Ein Haus, in dem Erreichbarkeit die Ausnahme ist und Ruhe die Regel.</h2>
+            <p>Unser Name verbindet das englische Wort <span lang="en">fell</span> für Berg und Bergweide mit Wellness. Holz, Naturstein und Leinen, große Fenster zu den Gipfeln und ein Team, das da ist, wenn Sie es brauchen – und sonst unsichtbar bleibt.</p>
+            <p>Herz des Hauses ist die Lobby: rund 250 m², doppelte Raumhöhe, eine Natursteinwand mit Kamin und eine durchgehende Glasfront zum See. Von hier geht es zu Ihrem Zimmer, ins Spa, ins Restaurant und an die Bar.</p>
+            <a class="link-more" href="ueber-uns.html">Mehr über uns</a>
+          </div>
+          <div class="photo-trio">
+            <img class="arch photo-trio__a" src="images/empfang-portrait.webp" alt="Mitarbeiterin am Empfang aus Holz und Naturstein im warmen Abendlicht" width="640" height="800" loading="lazy">
+            <img class="photo-trio__b" src="images/lounge.webp" alt="Lounge mit Kaminwand aus Naturstein, hellen Sofas und Panoramafenster zu den Bergen" width="1200" height="800" loading="lazy">
+            <img class="photo-trio__c" src="images/hotel-aussen.webp" alt="Beleuchtetes Hotelgebäude aus Holz und Naturstein mit beheiztem Außenpool im Schnee" width="1040" height="693" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <!-- Zimmer als Preiskarte -->
+      <section class="section" aria-labelledby="zimmer-titel">
+        <div class="container rate-card">
+          <div>
+            <p class="eyebrow">Zimmer &amp; Suite</p>
+            <h2 id="zimmer-titel">Raum für Ruhe</h2>
+            <ul class="rate-list">
+              <li>
+                <a class="rate-list__row" href="zimmer.html#einzelzimmer">
+                  <span class="rate-list__name">Einzelzimmer <span class="rate-list__meta">ca. 22 m² · Balkon · 1 Gast</span></span>
+                  <span class="rate-list__price">ab 290 €</span>
+                </a>
+              </li>
+              <li>
+                <a class="rate-list__row" href="zimmer-detail.html">
+                  <span class="rate-list__name">Panorama-Suite <span class="rate-list__meta">ca. 62 m² · Balkon · Kamin</span></span>
+                  <span class="rate-list__price">ab 690 €</span>
+                </a>
+              </li>
+            </ul>
+            <p class="note">Preise pro Nacht inklusive Frühstück. Fiktive Beispielpreise eines Studienprojekts.</p>
+            <a class="btn" href="zimmer.html">Zimmer vergleichen</a>
+          </div>
+          <figure class="rate-card__media">
+            <img class="arch" src="images/zimmer-panorama-suite.webp" alt="Panorama-Suite mit zweiseitigem Kamin zwischen Schlaf- und Wohnbereich und Balkon zum See" width="1200" height="800" loading="lazy">
+            <figcaption>Panorama-Suite</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Wellness als Bildbühne -->
+      <section class="stage" aria-labelledby="wellness-titel">
+        <img class="stage__img" src="images/wellness-innenpool.webp" alt="Innenpool mit Liegen aus Holz und Panoramafenster zu den verschneiten Bergen" width="1200" height="800" loading="lazy">
+        <div class="container">
+          <div class="stage__card">
+            <p class="eyebrow">Wellness &amp; Spa</p>
+            <h2 id="wellness-titel">Ein Spa ohne Uhren und ohne Bildschirme</h2>
+            <p>Im Gartengeschoss liegen Innenpool (13 × 5 m), finnische Sauna, Dampfbad und Panorama-Ruheraum. Durch einen Kanal schwimmen Sie hinaus in den Infinity-Pool – ganzjährig 34 °C, auch mitten im Schnee.</p>
+            <a class="link-more" href="wellness.html">Spa ansehen</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gästestimme -->
+      <section class="section" aria-labelledby="stimmen-titel">
+        <div class="container container--narrow testimonial">
+          <p class="eyebrow">Stimmen unserer Gäste</p>
+          <h2 id="stimmen-titel" class="statement">„Nach drei Tagen habe ich mein Handy nicht mehr vermisst.“</h2>
+          <p class="testimonial__author">Martina K., Geschäftsführerin · Einzelzimmer</p>
+          <p class="note">Fiktive Beispielbewertung eines Studienprojekts</p>
+          <a class="link-more" href="rezensionen.html">Alle Gästestimmen lesen</a>
+        </div>
+      </section>
+
+      <!-- Abschluss-Band -->
+      <section class="section section--dark cta-band" aria-labelledby="cta-titel">
+        <div class="container cta-band__grid">
+          <div>
+            <p class="eyebrow">Ihre Auszeit</p>
+            <h2 id="cta-titel">Ihre Auszeit beginnt hier</h2>
+          </div>
+          <div>
+            <p>Wählen Sie Ihre Reisedaten und Ihr Zimmer – den Rest übernehmen wir.</p>
+            <div class="btn-row">
+              <a class="btn" href="buchung.html">Aufenthalt buchen</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <footer class="site-footer">
       <div class="container">
