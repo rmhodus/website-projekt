@@ -2435,3 +2435,17 @@ p {
     color: #000000;
   }
 }
+
+
+/* Safari (iPhone/iPad): Datumsfeld bleibt in seiner Spalte und behält seine Höhe */
+.field {
+  min-width: 0;
+}
+
+.field input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  min-width: 0;
+  min-height: 2.75rem;
+}
