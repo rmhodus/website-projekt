@@ -7,29 +7,161 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Fellness</a>
-    <nav aria-label="Hauptnavigation">
-      <ul>
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="zimmer.html">Zimmer</a></li>
-        <li><a href="wellness.html">Wellness</a></li>
-        <li><a href="rezensionen.html">Rezensionen</a></li>
-        <li><a href="ueber-uns.html" aria-current="page">Über uns</a></li>
-        <li><a href="buchung.html">Jetzt buchen</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <h1>Über uns</h1>
-    <p>Inhalt folgt.</p>
-    <p><a href="buchung.html">Jetzt buchen</a></p>
-  </main>
+  <!-- Dark Mode ohne JavaScript: Checkbox steht VOR .site-wrapper -->
+  <input type="checkbox" id="darkmode-toggle" class="visually-hidden">
+  <div class="site-wrapper">
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-  <footer>
-    <p><a href="impressum.html">Impressum</a></p>
-    <p>Fiktive Arbeit im Rahmen eines Projekts an der DHBW Heidenheim.</p>
-  </footer>
+    <header class="site-header">
+      <div class="container header-inner">
+        <label class="darkmode-label" for="darkmode-toggle"><span class="visually-hidden">Dunkles Design ein- oder ausschalten</span></label>
+        <a class="brand" href="index.html">
+          <span class="brand-name">FELLNESS</span>
+          <span class="brand-place">Wellnesshotel · Alpen</span>
+        </a>
+        <!-- Mobiles Menü: Checkbox + Label -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle visually-hidden">
+        <label class="nav-burger" for="nav-toggle">Menü</label>
+        <nav class="site-nav" aria-label="Hauptnavigation">
+          <ul>
+            <li><a href="zimmer.html">Zimmer</a></li>
+            <li><a href="wellness.html">Wellness</a></li>
+            <li><a href="rezensionen.html">Rezensionen</a></li>
+            <li><a href="ueber-uns.html" aria-current="page">Über uns</a></li>
+            <li><a class="btn" href="buchung.html">Jetzt buchen</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <section class="hero hero--compact" aria-labelledby="seiten-titel">
+        <div class="container container--narrow">
+          <p class="eyebrow">Über uns · Unsere Philosophie</p>
+          <h1 id="seiten-titel">Weniger Signal. Mehr Leben.</h1>
+          <p class="lead">FELLNESS ist aus einer einfachen Frage entstanden: Wann waren Sie zuletzt wirklich nicht erreichbar? Für viele Berufstätige liegt die Antwort Jahre zurück. Wir möchten das ändern – mit einem Haus, in dem Ruhe von selbst entsteht.</p>
+          <p>Unser Name verbindet das englische Wort <span lang="en">fell</span> für Berg und Bergweide mit Wellness. Sechs Grundsätze prägen, wie wir arbeiten.</p>
+        </div>
+      </section>
+
+      <!-- Kapitel im Zickzack: Die Nummern erzeugt ein CSS-Zähler -->
+      <section class="section" aria-labelledby="kapitel-titel">
+        <div class="container">
+          <h2 id="kapitel-titel" class="visually-hidden">Sechs Grundsätze</h2>
+          <div class="chapters">
+            <article class="chapter" aria-labelledby="k1">
+              <div class="chapter__body">
+                <h3 id="k1">Ruhe ist ein Gestaltungsprinzip</h3>
+                <p>Stille entsteht bei uns nicht zufällig. Schallgedämmte Wände, großzügige Abstände zwischen den Suiten, getrennte Wege für Spa und Restaurant und klar markierte Ruhezonen sorgen dafür, dass Sie Ihre Gedanken wieder hören.</p>
+              </div>
+            </article>
+            <article class="chapter" aria-labelledby="k2">
+              <div class="chapter__body">
+                <h3 id="k2">Digital Detox – freiwillig, aber konsequent</h3>
+                <p>Niemand muss sein Smartphone abgeben – wir setzen auf Räume statt auf Verbote. In Spa, Restaurant und Lounge gilt für alle: keine Bildschirme. Für dringende Anrufe gibt es einen ruhigen Arbeitsraum.</p>
+              </div>
+            </article>
+            <article class="chapter" aria-labelledby="k3">
+              <div class="chapter__body">
+                <h3 id="k3">Entspannung für den Berufsalltag</h3>
+                <p>Unsere Gäste tragen im Job Verantwortung. Darum verbinden wir Wellness mit Anwendungen gegen Verspannungen, mit klaren Tagesstrukturen und genug freier Zeit, um nichts zu müssen.</p>
+              </div>
+            </article>
+            <article class="chapter" aria-labelledby="k4">
+              <div class="chapter__body">
+                <h3 id="k4">Ein Service, der mitdenkt</h3>
+                <p>Ihr persönlicher Ansprechpartner begleitet Sie von der ersten Anfrage an. Er reserviert Anwendungen, plant Wanderungen nach Wetter und Kondition und erinnert Sie an nichts, woran Sie nicht erinnert werden möchten.</p>
+              </div>
+            </article>
+            <article class="chapter" aria-labelledby="k5">
+              <div class="chapter__body">
+                <h3 id="k5">Wellness ganzheitlich gedacht</h3>
+                <p>Erholung entsteht aus dem Zusammenspiel von Bewegung, Wärme, guter Ernährung und Schlaf. Deshalb verbinden wir Spa-Anwendungen mit Yoga, Spaziergängen in der Bergluft und einer Küche, die regionale Zutaten leicht zubereitet.</p>
+              </div>
+            </article>
+            <article class="chapter" aria-labelledby="k6">
+              <div class="chapter__body">
+                <h3 id="k6">Die Berge als Lehrer</h3>
+                <p>In den Bergen verliert Zeit ihre Hektik. Ein Weg dauert so lange, wie er dauert, das Wetter lässt sich nicht verhandeln. Diese Gelassenheit möchten wir Ihnen mitgeben – auch für die Zeit nach Ihrer Abreise.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--surface" aria-labelledby="regeln-titel">
+        <div class="container container--narrow">
+          <p class="eyebrow">Gut zu wissen</p>
+          <h2 id="regeln-titel">Was bei uns anders ist</h2>
+          <ul class="check-list">
+            <li>WLAN gibt es in den Suiten und im Arbeitsraum, in Spa und Restaurant bewusst nicht.</li>
+            <li>Telefonate führen Sie in Ihrer Suite oder im Arbeitsraum, nicht in den Gemeinschaftsbereichen.</li>
+            <li>Kinder sind herzlich willkommen; der Ruhebereich des Spas ist Gästen ab 16 Jahren vorbehalten.</li>
+            <li>Ab 22 Uhr gilt im ganzen Haus Nachtruhe.</li>
+            <li>Für Angehörige gibt es eine Notfallnummer der Rezeption, damit Sie Ihr Smartphone guten Gewissens weglegen können.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section--dark cta-band" aria-labelledby="cta-titel">
+        <div class="container cta-band__grid">
+          <div>
+            <p class="eyebrow">Ihre Auszeit</p>
+            <h2 id="cta-titel">Erleben Sie die Stille selbst</h2>
+          </div>
+          <div>
+            <p>Finden Sie die Suite, in der Sie am besten abschalten können.</p>
+            <div class="btn-row">
+              <a class="btn" href="buchung.html">Aufenthalt buchen</a>
+              <a class="btn btn--outline" href="zimmer.html">Zimmer ansehen</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-head">
+          <p class="footer-brand">FELLNESS</p>
+          <p class="footer-claim">Stille ist der neue Luxus.</p>
+        </div>
+        <div class="footer-grid">
+          <nav aria-labelledby="footer-entdecken">
+            <h2 class="footer-title" id="footer-entdecken">Entdecken</h2>
+            <ul>
+              <li><a href="index.html">Startseite</a></li>
+              <li><a href="zimmer.html">Zimmer</a></li>
+              <li><a href="wellness.html">Wellness &amp; Spa</a></li>
+              <li><a href="rezensionen.html">Rezensionen</a></li>
+              <li><a href="ueber-uns.html" aria-current="page">Über uns</a></li>
+            </ul>
+          </nav>
+          <nav aria-labelledby="footer-planen">
+            <h2 class="footer-title" id="footer-planen">Planen</h2>
+            <ul>
+              <li><a href="buchung.html">Aufenthalt buchen</a></li>
+              <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+          </nav>
+          <div>
+            <h2 class="footer-title">Kontakt</h2>
+            <address>
+              FELLNESS Wellnesshotel (fiktiv)<br>
+              Beispielweg 1<br>
+              12345 Musterort<br>
+              <a href="mailto:kontakt@fellness.example">kontakt@fellness.example</a>
+            </address>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 FELLNESS – Studienprojekt</p>
+          <p class="dhbw-disclaimer">Diese Webseite ist eine fiktive Studienarbeit im Rahmen des Studiengangs Wirtschaftsinformatik an der DHBW Heidenheim.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>

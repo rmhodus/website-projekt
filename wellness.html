@@ -7,29 +7,210 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Fellness</a>
-    <nav aria-label="Hauptnavigation">
-      <ul>
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="zimmer.html">Zimmer</a></li>
-        <li><a href="wellness.html" aria-current="page">Wellness</a></li>
-        <li><a href="rezensionen.html">Rezensionen</a></li>
-        <li><a href="ueber-uns.html">Über uns</a></li>
-        <li><a href="buchung.html">Jetzt buchen</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <h1>Wellness &amp; Spa</h1>
-    <p>Inhalt folgt.</p>
-    <p><a href="wellness-detail.html">Infinity-Pool ansehen</a></p>
-  </main>
+  <!-- Dark Mode ohne JavaScript: Checkbox steht VOR .site-wrapper -->
+  <input type="checkbox" id="darkmode-toggle" class="visually-hidden">
+  <div class="site-wrapper">
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-  <footer>
-    <p><a href="impressum.html">Impressum</a></p>
-    <p>Fiktive Arbeit im Rahmen eines Projekts an der DHBW Heidenheim.</p>
-  </footer>
+    <header class="site-header">
+      <div class="container header-inner">
+        <label class="darkmode-label" for="darkmode-toggle"><span class="visually-hidden">Dunkles Design ein- oder ausschalten</span></label>
+        <a class="brand" href="index.html">
+          <span class="brand-name">FELLNESS</span>
+          <span class="brand-place">Wellnesshotel · Alpen</span>
+        </a>
+        <!-- Mobiles Menü: Checkbox + Label -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle visually-hidden">
+        <label class="nav-burger" for="nav-toggle">Menü</label>
+        <nav class="site-nav" aria-label="Hauptnavigation">
+          <ul>
+            <li><a href="zimmer.html">Zimmer</a></li>
+            <li><a href="wellness.html" aria-current="page">Wellness</a></li>
+            <li><a href="rezensionen.html">Rezensionen</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a class="btn" href="buchung.html">Jetzt buchen</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <section class="hero hero--compact" aria-labelledby="seiten-titel">
+        <div class="container container--narrow">
+          <p class="eyebrow">Wellness &amp; Spa</p>
+          <h1 id="seiten-titel">Wellness, die Sie nicht planen müssen</h1>
+          <p class="lead">1.800 Quadratmeter für Wärme, Wasser und Ruhe – ohne Bildschirme und ohne Terminkalender. Wählen Sie frei aus unseren Angeboten oder lassen Sie sich von einem Programm durch die Tage tragen.</p>
+          <p class="note">Flächen, Öffnungszeiten und Preise sind fiktive Angaben eines Studienprojekts.</p>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="spa-titel">
+        <div class="container">
+          <h2 id="spa-titel" class="visually-hidden">Bereiche des Spas</h2>
+          <div class="bento">
+            <article class="bento__item bento__item--8" aria-labelledby="b-pool">
+              <img class="media" src="images/spa-pool.webp" alt="Innenpool mit Holzdecke, Liegen und Glasfront zu verschneiten Bergen" width="1200" height="800" loading="lazy">
+              <h3 id="b-pool">Infinity-Pool und Durchschwimmkanal</h3>
+              <p>Ein 20 Meter langes Becken mit 30 °C Wassertemperatur und raumhohen Fenstern zu den Bergen. Durch einen Kanal schwimmen Sie vom Innenbecken direkt in den beheizten Außenpool.</p>
+              <a class="link-more" href="wellness-detail.html">Infinity-Pool ansehen</a>
+            </article>
+            <article class="bento__item bento__item--4 bento__item--accent" aria-labelledby="b-zeiten">
+              <h3 id="b-zeiten">Öffnungszeiten</h3>
+              <dl class="schedule">
+                <dt>Pool</dt><dd>7 – 21 Uhr</dd>
+                <dt>Saunen</dt><dd>14 – 21 Uhr</dd>
+                <dt>Anwendungen</dt><dd>9 – 20 Uhr</dd>
+                <dt>Ruhebereich</dt><dd>ab 16 Jahren</dd>
+              </dl>
+              <p class="note">Bitte reservieren Sie Anwendungen im Voraus.</p>
+            </article>
+            <article class="bento__item bento__item--5" aria-labelledby="b-sauna">
+              <h3 id="b-sauna">Saunawelt</h3>
+              <p>Drei Wärmeräume, jeder für eine andere Stimmung. Aufgüsse zur vollen Stunde ab 15 Uhr, mit Kräutern von Bergwiesen.</p>
+              <ul class="check-list">
+                <li><strong>Panorama-Sauna:</strong> finnisch, 85–90 °C, etwa 10 % Luftfeuchte. Glasfront zu den Bergen, Aufguss mit Latschenkiefer.</li>
+                <li><strong>Zirbensauna:</strong> 60–65 °C, etwa 40 % Luftfeuchte. Wände aus Zirbenholz, Aufguss mit Bergheu und Thymian.</li>
+                <li><strong>Kräuter-Dampfbad:</strong> 45 °C, nahezu 100 % Luftfeuchte. Sanfte Wärme für den Einstieg.</li>
+              </ul>
+              <p>Danach ruhen Sie auf beheizten Liegen am Kamin.</p>
+            </article>
+            <article class="bento__item bento__item--7" aria-labelledby="b-anw">
+              <h3 id="b-anw">Anwendungen</h3>
+              <ul class="check-list">
+                <li>Alpine Ganzkörpermassage mit Arnika, 60 Minuten</li>
+                <li>Nacken- und Schultermassage gegen Schreibtischverspannung, 30 Minuten</li>
+                <li>Bergheu-Wickel zur Entspannung, 45 Minuten</li>
+                <li>Gesichtsbehandlung mit Naturkosmetik, 50 Minuten</li>
+                <li>Massage in Ihrer Suite, auf Anfrage</li>
+              </ul>
+            </article>
+            <article class="bento__item bento__item--4" aria-labelledby="b-yoga">
+              <h3 id="b-yoga">Yoga &amp; Bewegung</h3>
+              <p>Täglich sanftes Yoga am Morgen, Atemübungen am Abend und begleitete Spaziergänge in der Bergluft. In kleinen Gruppen, ohne Leistungsdruck.</p>
+            </article>
+            <article class="bento__item bento__item--4" aria-labelledby="b-ruhe">
+              <h3 id="b-ruhe">Ruheräume</h3>
+              <p>Lesesessel, Wasserbetten mit Blick auf den Bergwald und eine Teebar mit Kräutern aus der Region. Gespräche führen Sie bitte leise, Bildschirme bleiben draußen.</p>
+            </article>
+            <article class="bento__item bento__item--4 bento__item--dark" aria-labelledby="b-kueche">
+              <h3 id="b-kueche">Leichte Alpenküche</h3>
+              <p>Frühstück bis 12 Uhr, mittags kleine Gerichte im Spa, abends ein Menü aus regionalen Zutaten. Auf Wunsch vegetarisch, vegan oder laktosefrei.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--surface" aria-labelledby="programme-titel">
+        <div class="container">
+          <p class="eyebrow">Programme</p>
+          <h2 id="programme-titel">Drei Wege zur Erholung</h2>
+          <p>Wählen Sie ein Programm, um Ablauf und Leistungen zu sehen. Mit der Tastatur wechseln Sie mit den Pfeiltasten.</p>
+          <!-- Programm-Auswahl ohne JavaScript: Radio-Buttons + Labels + Panels.
+               Die IDs (p-detox, p-silent, p-wellness, panel-…) werden vom CSS verwendet. -->
+          <div class="programs" role="radiogroup" aria-labelledby="programme-titel">
+            <input type="radio" name="programm" id="p-detox" class="programs__input visually-hidden" checked>
+            <label class="programs__label" for="p-detox">Digital Detox Kompakt</label>
+            <input type="radio" name="programm" id="p-silent" class="programs__input visually-hidden">
+            <label class="programs__label" for="p-silent">Silent Retreat</label>
+            <input type="radio" name="programm" id="p-wellness" class="programs__input visually-hidden">
+            <label class="programs__label" for="p-wellness">Wellness pur</label>
+
+            <div class="programs__panel" id="panel-detox">
+              <h3>Digital Detox Kompakt · 3 Nächte</h3>
+              <p>Für den Einstieg: ein verlängertes Wochenende ohne Smartphone, mit festen Ankerpunkten im Tag und viel freier Zeit dazwischen.</p>
+              <dl class="schedule">
+                <dt>07:30</dt><dd>Sanftes Yoga mit Blick auf die Berge</dd>
+                <dt>10:00</dt><dd>Begleitete Wanderung oder freie Zeit</dd>
+                <dt>15:00</dt><dd>Eine Spa-Anwendung pro Tag</dd>
+                <dt>19:00</dt><dd>Abendessen ohne Bildschirme</dd>
+              </dl>
+              <p class="price">ab 290 € pro Person zusätzlich zur Suite*</p>
+            </div>
+            <div class="programs__panel" id="panel-silent">
+              <h3>Silent Retreat · 5 Nächte</h3>
+              <p>Für alle, die tiefer gehen möchten: Tage in weitgehendem Schweigen, begleitet von einer erfahrenen Retreat-Leitung, mit Meditation, Bewegung und Naturerlebnis.</p>
+              <dl class="schedule">
+                <dt>07:00</dt><dd>Stille Meditation</dd>
+                <dt>09:30</dt><dd>Achtsames Gehen durch den Bergwald</dd>
+                <dt>14:00</dt><dd>Freie Zeit im Spa</dd>
+                <dt>18:30</dt><dd>Gemeinsames Abendessen in Stille</dd>
+              </dl>
+              <p class="price">ab 640 € pro Person zusätzlich zur Suite*</p>
+            </div>
+            <div class="programs__panel" id="panel-wellness">
+              <h3>Wellness pur · ab 2 Nächten</h3>
+              <p>Für alle, die einfach genießen möchten: ein Programm ohne feste Zeiten, mit Anwendungen nach Wahl und einem persönlichen Gespräch zu Beginn.</p>
+              <ul class="check-list">
+                <li>Persönliches Erstgespräch mit dem Spa-Team</li>
+                <li>Zwei Anwendungen nach Wahl pro Aufenthalt</li>
+                <li>Täglich frische Säfte und Tees an der Spa-Bar</li>
+              </ul>
+              <p class="price">ab 180 € pro Person zusätzlich zur Suite*</p>
+            </div>
+          </div>
+          <p class="note">* Fiktive Beispielpreise eines Studienprojekts. Die Programme sind Wellnessangebote und ersetzen keine medizinische oder therapeutische Behandlung.</p>
+        </div>
+      </section>
+
+      <section class="section section--dark cta-band" aria-labelledby="cta-titel">
+        <div class="container cta-band__grid">
+          <div>
+            <p class="eyebrow">Ihre Auszeit</p>
+            <h2 id="cta-titel">Ihre Auszeit, persönlich geplant</h2>
+          </div>
+          <div>
+            <p>Nennen Sie uns Ihr Wunschprogramm – wir stimmen Anwendungen und Zeiten mit Ihnen ab.</p>
+            <div class="btn-row">
+              <a class="btn" href="buchung.html">Aufenthalt buchen</a>
+              <a class="btn btn--outline" href="zimmer.html">Passende Suite finden</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-head">
+          <p class="footer-brand">FELLNESS</p>
+          <p class="footer-claim">Stille ist der neue Luxus.</p>
+        </div>
+        <div class="footer-grid">
+          <nav aria-labelledby="footer-entdecken">
+            <h2 class="footer-title" id="footer-entdecken">Entdecken</h2>
+            <ul>
+              <li><a href="index.html">Startseite</a></li>
+              <li><a href="zimmer.html">Zimmer</a></li>
+              <li><a href="wellness.html" aria-current="page">Wellness &amp; Spa</a></li>
+              <li><a href="rezensionen.html">Rezensionen</a></li>
+              <li><a href="ueber-uns.html">Über uns</a></li>
+            </ul>
+          </nav>
+          <nav aria-labelledby="footer-planen">
+            <h2 class="footer-title" id="footer-planen">Planen</h2>
+            <ul>
+              <li><a href="buchung.html">Aufenthalt buchen</a></li>
+              <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+          </nav>
+          <div>
+            <h2 class="footer-title">Kontakt</h2>
+            <address>
+              FELLNESS Wellnesshotel (fiktiv)<br>
+              Beispielweg 1<br>
+              12345 Musterort<br>
+              <a href="mailto:kontakt@fellness.example">kontakt@fellness.example</a>
+            </address>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 FELLNESS – Studienprojekt</p>
+          <p class="dhbw-disclaimer">Diese Webseite ist eine fiktive Studienarbeit im Rahmen des Studiengangs Wirtschaftsinformatik an der DHBW Heidenheim.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>

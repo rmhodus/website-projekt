@@ -7,29 +7,149 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Fellness</a>
-    <nav aria-label="Hauptnavigation">
-      <ul>
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="zimmer.html">Zimmer</a></li>
-        <li><a href="wellness.html">Wellness</a></li>
-        <li><a href="rezensionen.html">Rezensionen</a></li>
-        <li><a href="ueber-uns.html">Über uns</a></li>
-        <li><a href="buchung.html">Jetzt buchen</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <h1>Impressum</h1>
-    <p>Inhalt folgt (fiktive Angaben).</p>
-    <p><a href="index.html">Zur Startseite</a></p>
-  </main>
+  <!-- Dark Mode ohne JavaScript: Checkbox steht VOR .site-wrapper -->
+  <input type="checkbox" id="darkmode-toggle" class="visually-hidden">
+  <div class="site-wrapper">
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-  <footer>
-    <p><a href="impressum.html">Impressum</a></p>
-    <p>Fiktive Arbeit im Rahmen eines Projekts an der DHBW Heidenheim.</p>
-  </footer>
+    <header class="site-header">
+      <div class="container header-inner">
+        <label class="darkmode-label" for="darkmode-toggle"><span class="visually-hidden">Dunkles Design ein- oder ausschalten</span></label>
+        <a class="brand" href="index.html">
+          <span class="brand-name">FELLNESS</span>
+          <span class="brand-place">Wellnesshotel · Alpen</span>
+        </a>
+        <!-- Mobiles Menü: Checkbox + Label -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle visually-hidden">
+        <label class="nav-burger" for="nav-toggle">Menü</label>
+        <nav class="site-nav" aria-label="Hauptnavigation">
+          <ul>
+            <li><a href="zimmer.html">Zimmer</a></li>
+            <li><a href="wellness.html">Wellness</a></li>
+            <li><a href="rezensionen.html">Rezensionen</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a class="btn" href="buchung.html">Jetzt buchen</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <section class="hero hero--compact" aria-labelledby="seiten-titel">
+        <div class="container container--narrow">
+          <h1 id="seiten-titel">Impressum &amp; Kontakt</h1>
+          <p class="notice"><strong>Projekthinweis:</strong> Diese Webseite ist eine fiktive Studienarbeit im Rahmen des Studiengangs Wirtschaftsinformatik an der DHBW Heidenheim. FELLNESS ist ein fiktives Unternehmen. Alle Angaben sind erfunden.</p>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Angaben">
+        <div class="container doc">
+          <nav class="doc-nav" aria-labelledby="doc-nav-titel">
+            <h2 id="doc-nav-titel" class="eyebrow">Auf dieser Seite</h2>
+            <ol>
+              <li><a href="#angaben">Angaben zum Unternehmen</a></li>
+              <li><a href="#kontakt">Kontakt</a></li>
+              <li><a href="#verantwortlich">Verantwortlich</a></li>
+              <li><a href="#hochschule">Hochschule</a></li>
+              <li><a href="#datenschutz">Datenschutz</a></li>
+              <li><a href="#bildnachweise">Bild- und Quellennachweise</a></li>
+            </ol>
+          </nav>
+          <div>
+            <section class="doc-section" id="angaben" aria-labelledby="h-angaben">
+              <h2 id="h-angaben">Angaben zum fiktiven Unternehmen</h2>
+              <address>
+                FELLNESS Wellnesshotel GmbH (fiktiv)<br>
+                Beispielweg 1 (fiktive Anschrift)<br>
+                12345 Musterort<br>
+                Deutschland
+              </address>
+              <p>Handelsregister und Umsatzsteuer-Identifikationsnummer: entfallen, da es sich um ein fiktives Unternehmen ohne Registereintrag handelt.</p>
+            </section>
+            <section class="doc-section" id="kontakt" aria-labelledby="h-kontakt">
+              <h2 id="h-kontakt">Kontakt</h2>
+              <p>E-Mail: <a href="mailto:kontakt@fellness.example">kontakt@fellness.example</a></p>
+              <p>Die Domain <span lang="en">.example</span> ist für Beispiele reserviert, E-Mails kommen nicht an. Eine Telefonnummer geben wir für dieses Studienprojekt bewusst nicht an.</p>
+            </section>
+            <section class="doc-section" id="verantwortlich" aria-labelledby="h-verantwortlich">
+              <h2 id="h-verantwortlich">Verantwortlich für den Inhalt</h2>
+              <p>Projektgruppe Wirtschaftsinformatik, DHBW Heidenheim, Webseiten-Projekt 2026.</p>
+            </section>
+            <section class="doc-section" id="hochschule" aria-labelledby="h-hochschule">
+              <h2 id="h-hochschule">Hochschule</h2>
+              <p>Duale Hochschule Baden-Württemberg Heidenheim, Studiengang Wirtschaftsinformatik, Modul Grundlagen der Wirtschaftsinformatik.</p>
+              <p class="dhbw-disclaimer">Diese Webseite ist eine fiktive Studienarbeit im Rahmen des Studiengangs Wirtschaftsinformatik an der DHBW Heidenheim.</p>
+            </section>
+            <section class="doc-section" id="datenschutz" aria-labelledby="h-datenschutz">
+              <h2 id="h-datenschutz">Datenschutzhinweise zum Projekt</h2>
+              <ul class="check-list">
+                <li>Diese Website verwendet kein JavaScript, keine Cookies, keine Tracking- oder Analysewerkzeuge und lädt keine externen Schriften oder Inhalte.</li>
+                <li>Das Buchungsformular ist eine Demonstration ohne Server-Anbindung. Eingaben werden nicht gespeichert und nicht übermittelt. Technisch bedingt können sie nach dem Absenden in der Adresszeile des Browsers erscheinen.</li>
+                <li>Wird die Website über einen Webserver bereitgestellt, kann dessen Betreiber technisch übliche Zugriffsdaten (zum Beispiel IP-Adresse und Zeitpunkt) protokollieren. Darauf hat dieses Projekt keinen Einfluss.</li>
+              </ul>
+            </section>
+            <section class="doc-section" id="bildnachweise" aria-labelledby="h-bildnachweise">
+              <h2 id="h-bildnachweise">Bild- und Quellennachweise</h2>
+              <p>Schriften: ausschließlich auf dem Gerät vorinstallierte Systemschriften (Georgia, system-ui). Es werden keine Schriftdateien geladen.</p>
+              <p>Bilder von Hotelanlage, Pool, Lounge und Suiten: KI-generiert mit Google Gemini nach eigenen Prompts der Projektgruppe. Das Hotel und seine Räume existieren nicht. Einzelnachweise stehen in der README.</p>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--surface" aria-labelledby="zurueck-titel">
+        <div class="container container--narrow text-center">
+          <h2 id="zurueck-titel">Zurück zu FELLNESS</h2>
+          <div class="btn-row">
+            <a class="btn" href="index.html">Zur Startseite</a>
+            <a class="btn btn--outline" href="buchung.html">Aufenthalt buchen</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-head">
+          <p class="footer-brand">FELLNESS</p>
+          <p class="footer-claim">Stille ist der neue Luxus.</p>
+        </div>
+        <div class="footer-grid">
+          <nav aria-labelledby="footer-entdecken">
+            <h2 class="footer-title" id="footer-entdecken">Entdecken</h2>
+            <ul>
+              <li><a href="index.html">Startseite</a></li>
+              <li><a href="zimmer.html">Zimmer</a></li>
+              <li><a href="wellness.html">Wellness &amp; Spa</a></li>
+              <li><a href="rezensionen.html">Rezensionen</a></li>
+              <li><a href="ueber-uns.html">Über uns</a></li>
+            </ul>
+          </nav>
+          <nav aria-labelledby="footer-planen">
+            <h2 class="footer-title" id="footer-planen">Planen</h2>
+            <ul>
+              <li><a href="buchung.html">Aufenthalt buchen</a></li>
+              <li><a href="impressum.html" aria-current="page">Impressum</a></li>
+            </ul>
+          </nav>
+          <div>
+            <h2 class="footer-title">Kontakt</h2>
+            <address>
+              FELLNESS Wellnesshotel (fiktiv)<br>
+              Beispielweg 1<br>
+              12345 Musterort<br>
+              <a href="mailto:kontakt@fellness.example">kontakt@fellness.example</a>
+            </address>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 FELLNESS – Studienprojekt</p>
+          <p class="dhbw-disclaimer">Diese Webseite ist eine fiktive Studienarbeit im Rahmen des Studiengangs Wirtschaftsinformatik an der DHBW Heidenheim.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>

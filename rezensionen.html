@@ -7,29 +7,234 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Fellness</a>
-    <nav aria-label="Hauptnavigation">
-      <ul>
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="zimmer.html">Zimmer</a></li>
-        <li><a href="wellness.html">Wellness</a></li>
-        <li><a href="rezensionen.html" aria-current="page">Rezensionen</a></li>
-        <li><a href="ueber-uns.html">Über uns</a></li>
-        <li><a href="buchung.html">Jetzt buchen</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <h1>Was unsere Gäste sagen</h1>
-    <p>Inhalt folgt.</p>
-    <p><a href="buchung.html">Jetzt buchen</a></p>
-  </main>
+  <!-- Dark Mode ohne JavaScript: Checkbox steht VOR .site-wrapper -->
+  <input type="checkbox" id="darkmode-toggle" class="visually-hidden">
+  <div class="site-wrapper">
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-  <footer>
-    <p><a href="impressum.html">Impressum</a></p>
-    <p>Fiktive Arbeit im Rahmen eines Projekts an der DHBW Heidenheim.</p>
-  </footer>
+    <header class="site-header">
+      <div class="container header-inner">
+        <label class="darkmode-label" for="darkmode-toggle"><span class="visually-hidden">Dunkles Design ein- oder ausschalten</span></label>
+        <a class="brand" href="index.html">
+          <span class="brand-name">FELLNESS</span>
+          <span class="brand-place">Wellnesshotel · Alpen</span>
+        </a>
+        <!-- Mobiles Menü: Checkbox + Label -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle visually-hidden">
+        <label class="nav-burger" for="nav-toggle">Menü</label>
+        <nav class="site-nav" aria-label="Hauptnavigation">
+          <ul>
+            <li><a href="zimmer.html">Zimmer</a></li>
+            <li><a href="wellness.html">Wellness</a></li>
+            <li><a href="rezensionen.html" aria-current="page">Rezensionen</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a class="btn" href="buchung.html">Jetzt buchen</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <section class="hero hero--compact" aria-labelledby="seiten-titel">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Rezensionen</p>
+            <h1 id="seiten-titel">Was unsere Gäste erleben</h1>
+            <p class="lead">Ehrliche Eindrücke zu Ruhe, Service und Programmen – auch dort, wo wir noch besser werden können.</p>
+          </div>
+          <div class="score" aria-labelledby="score-titel">
+            <p id="score-titel" class="score__label">Durchschnitt aus 8 Bewertungen</p>
+            <p class="score__value">4,6 <span>von 5</span></p>
+            <p class="rating" aria-hidden="true">★★★★★</p>
+          </div>
+        </div>
+        <div class="container">
+          <p class="notice"><strong>Hinweis:</strong> Alle Bewertungen auf dieser Seite sind fiktive Beispiele eines Studienprojekts. Es gibt keine echten Gäste, die Namen sind abgekürzt und erfunden.</p>
+        </div>
+      </section>
+
+      <!-- Filter ohne JavaScript: Radio-Buttons + :has() im CSS.
+           Die IDs (f-alle, f-paare, f-business, f-familie, f-retreat) und die
+           data-kategorie-Werte der Karten müssen zusammenpassen. -->
+      <section class="section" aria-labelledby="bewertungen-titel">
+        <div class="container reviews">
+          <h2 id="bewertungen-titel">Alle Bewertungen</h2>
+          <div class="programs" role="radiogroup" aria-label="Bewertungen nach Reiseart filtern">
+            <input type="radio" name="filter" id="f-alle" class="programs__input visually-hidden" checked>
+            <label class="programs__label" for="f-alle">Alle</label>
+            <input type="radio" name="filter" id="f-paare" class="programs__input visually-hidden">
+            <label class="programs__label" for="f-paare">Paare</label>
+            <input type="radio" name="filter" id="f-business" class="programs__input visually-hidden">
+            <label class="programs__label" for="f-business">Berufstätige</label>
+            <input type="radio" name="filter" id="f-familie" class="programs__input visually-hidden">
+            <label class="programs__label" for="f-familie">Familien</label>
+            <input type="radio" name="filter" id="f-retreat" class="programs__input visually-hidden">
+            <label class="programs__label" for="f-retreat">Retreat</label>
+          </div>
+          <ul class="review-grid">
+            <li class="review" data-kategorie="paare">
+              <article aria-labelledby="r1">
+                <p class="review__meta">Paare</p>
+                <p class="rating"><span class="visually-hidden">5 von 5 Sternen</span><span aria-hidden="true">★★★★★</span></p>
+                <h3 id="r1">Nach drei Tagen habe ich mein Handy nicht mehr vermisst.</h3>
+                <blockquote>
+                  <p>Wir kamen mit dem Vorsatz, abzuschalten, und hatten ehrlich gesagt Zweifel. Am ersten Abend lag das Smartphone noch auf dem Nachttisch, am dritten blieb es in der Schublade. Die Ruhe im Haus hat uns beide überrascht.</p>
+                </blockquote>
+                <p class="review__author">K. und M., aus Stuttgart<br><span>Panorama-Suite · Oktober 2026</span></p>
+              </article>
+            </li>
+            <li class="review" data-kategorie="business">
+              <article aria-labelledby="r2">
+                <p class="review__meta">Berufstätige</p>
+                <p class="rating"><span class="visually-hidden">5 von 5 Sternen</span><span aria-hidden="true">★★★★★</span></p>
+                <h3 id="r2">Das erste Wochenende seit Jahren ohne E-Mails.</h3>
+                <blockquote>
+                  <p>Als Geschäftsführerin bin ich sonst immer im Dienst. Das Detox-Programm gibt dem Tag eine Struktur, ohne ihn zu füllen. Gut gefallen hat mir, dass ich im Arbeitsraum einmal am Tag kurz nach dem Rechten sehen konnte und danach wirklich Ruhe hatte.</p>
+                </blockquote>
+                <p class="review__author">S. B., Geschäftsführerin aus München<br><span>Digital Detox Kompakt · September 2026</span></p>
+              </article>
+            </li>
+            <li class="review" data-kategorie="retreat">
+              <article aria-labelledby="r3">
+                <p class="review__meta">Retreat</p>
+                <p class="rating"><span class="visually-hidden">5 von 5 Sternen</span><span aria-hidden="true">★★★★★</span></p>
+                <h3 id="r3">Fünf Tage Schweigen haben mehr bewirkt als jeder Urlaub.</h3>
+                <blockquote>
+                  <p>Die Retreat-Leitung war ruhig und klar, die Gruppe klein. Die Wege am Morgen in der Stille werde ich nicht vergessen. Wichtig: Man muss sich darauf einlassen wollen.</p>
+                </blockquote>
+                <p class="review__author">T. H., aus Frankfurt<br><span>Silent Retreat · August 2026</span></p>
+              </article>
+            </li>
+            <li class="review" data-kategorie="familie">
+              <article aria-labelledby="r4">
+                <p class="review__meta">Familien</p>
+                <p class="rating"><span class="visually-hidden">5 von 5 Sternen</span><span aria-hidden="true">★★★★★</span></p>
+                <h3 id="r4">Ruhig und trotzdem kinderfreundlich.</h3>
+                <blockquote>
+                  <p>Wir hatten Sorge, mit zwei Kindern zu stören. Der Pool war für die Kinder das Highlight, der Ruhebereich für uns. Das Team hat uns einen Tisch im Restaurant gegeben, an dem sich niemand gestört fühlte.</p>
+                </blockquote>
+                <p class="review__author">Familie R., aus Ulm<br><span>Panorama-Suite · Juli 2026</span></p>
+              </article>
+            </li>
+            <li class="review" data-kategorie="paare">
+              <article aria-labelledby="r5">
+                <p class="review__meta">Paare</p>
+                <p class="rating"><span class="visually-hidden">5 von 5 Sternen</span><span aria-hidden="true">★★★★★</span></p>
+                <h3 id="r5">Einmal durch den Kanal nach draußen – unvergesslich.</h3>
+                <blockquote>
+                  <p>Abends vom warmen Innenbecken in den dampfenden Außenpool zu schwimmen, während die Berge im letzten Licht stehen, war der schönste Moment unserer Reise. Für unseren Jahrestag genau richtig.</p>
+                </blockquote>
+                <p class="review__author">A. und J., aus Zürich<br><span>Panorama-Suite · Juni 2026</span></p>
+              </article>
+            </li>
+            <li class="review" data-kategorie="familie">
+              <article aria-labelledby="r6">
+                <p class="review__meta">Familien</p>
+                <p class="rating"><span class="visually-hidden">4 von 5 Sternen</span><span aria-hidden="true">★★★★☆</span></p>
+                <h3 id="r6">Wunderschön – abends für Kinder etwas zu ruhig.</h3>
+                <blockquote>
+                  <p>Lage, Zimmer und Spa sind großartig. Für unsere Kinder (8 und 11) war die Nachtruhe ab 22 Uhr und das Restaurant ohne Bildschirme anfangs eine Umstellung. Wir würden trotzdem wiederkommen.</p>
+                </blockquote>
+                <p class="review__author">Familie W., aus Augsburg<br><span>Panorama-Suite · April 2026</span></p>
+                <div class="review__reply">
+                  <p class="review__reply-title">Antwort des Hotels</p>
+                  <p>Vielen Dank für Ihre ehrliche Rückmeldung. Für Familien bieten wir inzwischen ein frühes Abendessen und Brettspiele in der Lounge an.</p>
+                </div>
+              </article>
+            </li>
+            <li class="review" data-kategorie="business">
+              <article aria-labelledby="r7">
+                <p class="review__meta">Berufstätige</p>
+                <p class="rating"><span class="visually-hidden">4 von 5 Sternen</span><span aria-hidden="true">★★★★☆</span></p>
+                <h3 id="r7">Ideal als Klausur für unser Führungsteam.</h3>
+                <blockquote>
+                  <p>Wir waren zu viert für zwei Tage Strategiearbeit hier. Ohne ständige Benachrichtigungen waren die Gespräche so konzentriert wie selten. Die Abende am Kamin haben dem Team gutgetan. Ein zweiter Arbeitsraum wäre hilfreich gewesen.</p>
+                </blockquote>
+                <p class="review__author">M. K., Bereichsleiter aus Stuttgart<br><span>Panorama-Suite · Mai 2026</span></p>
+                <div class="review__reply">
+                  <p class="review__reply-title">Antwort des Hotels</p>
+                  <p>Danke für Ihr Feedback. Für Teams stimmen wir künftig bei der Buchung vorab einen zweiten Arbeitsraum ab.</p>
+                </div>
+              </article>
+            </li>
+            <li class="review" data-kategorie="retreat">
+              <article aria-labelledby="r8">
+                <p class="review__meta">Retreat</p>
+                <p class="rating"><span class="visually-hidden">4 von 5 Sternen</span><span aria-hidden="true">★★★★☆</span></p>
+                <h3 id="r8">Am Anfang ungewohnt, am Ende wertvoll.</h3>
+                <blockquote>
+                  <p>Die ersten zwei Tage im Schweigen fielen mir schwer. Ein kurzes Vorgespräch zur Vorbereitung hätte geholfen. Ab dem dritten Tag hat es sich gelohnt.</p>
+                </blockquote>
+                <p class="review__author">L. F., aus Nürnberg<br><span>Silent Retreat · März 2026</span></p>
+                <div class="review__reply">
+                  <p class="review__reply-title">Antwort des Hotels</p>
+                  <p>Danke für den Hinweis. Seit dem Frühjahr bietet die Retreat-Leitung vor jedem Silent Retreat ein persönliches Vorgespräch an.</p>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section--dark cta-band" aria-labelledby="cta-titel">
+        <div class="container cta-band__grid">
+          <div>
+            <p class="eyebrow">Ihre Auszeit</p>
+            <h2 id="cta-titel">Schreiben Sie Ihre eigene Geschichte</h2>
+          </div>
+          <div>
+            <p>Erleben Sie selbst, wie sich echte Ruhe anfühlt.</p>
+            <div class="btn-row">
+              <a class="btn" href="buchung.html">Aufenthalt buchen</a>
+              <a class="btn btn--outline" href="zimmer.html">Zimmer ansehen</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-head">
+          <p class="footer-brand">FELLNESS</p>
+          <p class="footer-claim">Stille ist der neue Luxus.</p>
+        </div>
+        <div class="footer-grid">
+          <nav aria-labelledby="footer-entdecken">
+            <h2 class="footer-title" id="footer-entdecken">Entdecken</h2>
+            <ul>
+              <li><a href="index.html">Startseite</a></li>
+              <li><a href="zimmer.html">Zimmer</a></li>
+              <li><a href="wellness.html">Wellness &amp; Spa</a></li>
+              <li><a href="rezensionen.html" aria-current="page">Rezensionen</a></li>
+              <li><a href="ueber-uns.html">Über uns</a></li>
+            </ul>
+          </nav>
+          <nav aria-labelledby="footer-planen">
+            <h2 class="footer-title" id="footer-planen">Planen</h2>
+            <ul>
+              <li><a href="buchung.html">Aufenthalt buchen</a></li>
+              <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+          </nav>
+          <div>
+            <h2 class="footer-title">Kontakt</h2>
+            <address>
+              FELLNESS Wellnesshotel (fiktiv)<br>
+              Beispielweg 1<br>
+              12345 Musterort<br>
+              <a href="mailto:kontakt@fellness.example">kontakt@fellness.example</a>
+            </address>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 FELLNESS – Studienprojekt</p>
+          <p class="dhbw-disclaimer">Diese Webseite ist eine fiktive Studienarbeit im Rahmen des Studiengangs Wirtschaftsinformatik an der DHBW Heidenheim.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
