@@ -50,7 +50,7 @@ Startseite
 | Thema | Entscheidung | Erläuterung |
 |---|---|---|
 | Technik | Reines HTML und CSS, kein JavaScript | Vorgabe |
-| CSS | Eigenes CSS ohne Framework | in einer Datei css/stlye.css |
+| CSS | Eigenes CSS ohne Framework | in einer Datei css/style.css |
 | Farben | Nur als Variablen in :root | Einheitlich, an einer Stelle änderbar |
 | Responsive | Mobile-first, Breakpoints bei 48em (Tablet) und 64 em (Desktop) | Lesbar von 320 bis 1920 px |
 | Menü | Auf dem Handy per Checkbox und Label ein- und ausklappbar, ab 64em immer sichtbar | Ohne JavaScript |
@@ -62,7 +62,7 @@ Startseite
 ## Testhinweise
 
 - Über einen lokalen Server öffnen, nicht per Doppelklick.
-- Gepalnt: Test in aktuellen Versionen von Chrome, Firefox und Safari.
+- Geplant: Test in aktuellen Versionen von Chrome, Firefox und Safari.
 - Breiten 320, 768, 1280, 1920 px (DevTools → Device Toolbar).
 - Langsames Netz: DevTools → Network → *Slow 4G*.
 - Alles soll mit der Tastatur bedienbar sein.
