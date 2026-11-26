@@ -2449,3 +2449,15 @@ p {
   min-width: 0;
   min-height: 2.75rem;
 }
+
+/* Abschluss-Band nach einer getönten Section: Die getönte Fläche läuft unter den
+   runden Ecken weiter, damit dort nicht die Seitenfarbe durchscheint. */
+.section--surface:has(+ .cta-band) {
+  border-bottom: 2.5rem solid var(--color-tint);
+  margin-bottom: -2.5rem;
+}
+
+.section--surface + .cta-band {
+  position: relative;
+}
+
